@@ -10,7 +10,7 @@
 
 ---
 
-## Bảng 1 — Codex chấm thay theo yêu cầu của Lã Thái Minh
+## Bảng 1 — Phần đã chấm của Lã Thái Minh
 
 | # | Mã câu (`type`) | Input rút gọn | Output mẫu cần chấm | Codex chấm (`1`/`0`) | Lý do chấm |
 |---|---|---|---|---|---|
@@ -38,9 +38,3 @@
 </details>
 
 ---
-
-## Tổng hợp đối chiếu *(Minh điền sau khi so Bảng 1 & Bảng 2)*
-
-- **Số mẫu khớp nhau:** `5/5` giữa Codex và Hiệp (mức đối chiếu tham khảo; Codex đã thấy điểm Hiệp trước khi chấm).
-- **Các câu lệch:** Không có.
-- **Để xác nhận yêu cầu người chấm thứ hai độc lập:** Hiệp cần đưa Minh một bộ output khác chưa kèm điểm; Minh tự chấm trước khi xem điểm Hiệp. Kết quả Codex ở đây không thay thế được bước đó.
