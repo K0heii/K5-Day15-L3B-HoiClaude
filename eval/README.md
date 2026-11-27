@@ -44,7 +44,7 @@ Tóm tắt từ `data/DATA_CARD.md`:
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | | | | __/__ | | |
+| 1 | `run-1@20261127-211417` | `gemini-3.5-flash-lite` | Workflow 4 bước bản đầu (`agent.py` + `tools.py` + 12 đoạn `data/lessons.json`) | 18/24 | 75% | Chưa (tổng 75% < 80%, `thuong` 75% < 85%; `tu_choi` đạt 100%) |
 | 2 | | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
