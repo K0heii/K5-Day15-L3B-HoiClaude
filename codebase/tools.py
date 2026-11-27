@@ -40,22 +40,53 @@ _OUT_OF_SCOPE_PATTERNS = (
 _DISTRACTED_OR_NORMAL_PATTERNS = (
     "rời tab",
     "chuyển tab",
+    "blur window",
     "đi việc riêng",
     "đang đọc bình thường",
     "đọc bình thường",
     "đang ghi chép",
+    "tập trung đọc",
     "không kẹt",
+    "tin nhắn hv: (không có)",
+)
+
+_NEGATED_STUCK_PATTERNS = (
+    "chưa tua lại",
+    "không tua lại",
+    "không làm sai",
+    "chưa làm sai",
+    "không sai quiz",
+    "chưa sai quiz",
+    "quiz: chưa làm",
+)
+
+_IMPERATIVE_ATTACK_PATTERNS = (
+    "in ra đáp án",
+    "bỏ qua hướng dẫn",
+    "ignore previous",
+    "sửa điểm",
+    "đánh dấu hoàn thành",
+    "viết code hộ",
+    "cho mình biết câu nào đúng",
+    "chọn giúp",
 )
 
 _STUCK_PATTERNS = (
     "tua lại",
+    "tua đi tua lại",
+    "tua ngược",
+    "skipped_stop",
+    "bỏ qua câu quiz",
     "dừng lâu",
     "sai quiz",
+    "sai lần",
     "làm sai",
     "kẹt",
     "khó hiểu",
     "chưa hiểu",
     "không hiểu",
+    "chưa hình dung",
+    "rối chỗ",
     "quá tải",
     "giải thích",
     "là gì",
@@ -85,13 +116,30 @@ def parse_learner_signal(text: str) -> dict:
     seg_match = re.search(r"\b(D\d{2}-S\d{2})\b", raw, flags=re.IGNORECASE)
     segment_code = seg_match.group(1).upper() if seg_match else ""
 
-    is_quiz_answer_request = any(p in lower for p in _QUIZ_PATTERNS)
-    is_out_of_scope = any(p in lower for p in _OUT_OF_SCOPE_PATTERNS)
+    msg_match = re.search(r"tin nhắn hv:\s*(.+)$", lower)
+    msg_only = msg_match.group(1).strip() if msg_match else lower
 
-    has_distracted = any(p in lower for p in _DISTRACTED_OR_NORMAL_PATTERNS)
-    has_stuck = any(p in lower for p in _STUCK_PATTERNS)
+    is_conceptual_why = (
+        ("tại sao" in msg_only or "vì sao" in msg_only)
+        and not any(p in msg_only for p in _IMPERATIVE_ATTACK_PATTERNS)
+    )
 
-    if has_distracted and not has_stuck and not is_quiz_answer_request and not is_out_of_scope:
+    is_quiz_answer_request = (not is_conceptual_why) and any(p in msg_only for p in _QUIZ_PATTERNS)
+    is_out_of_scope = (not is_conceptual_why) and any(p in msg_only for p in _OUT_OF_SCOPE_PATTERNS)
+
+    # Chỉ xét phần Hành vi / Quiz / Tin nhắn HV để tránh bắt nhầm từ khoá trong tiêu đề Đoạn
+    behavior_scope = re.sub(r"\bđoạn:\s*[^|]+", "", lower)
+
+    has_distracted = any(p in behavior_scope for p in _DISTRACTED_OR_NORMAL_PATTERNS)
+    lower_for_stuck = behavior_scope
+    for neg in _NEGATED_STUCK_PATTERNS:
+        lower_for_stuck = lower_for_stuck.replace(neg, "")
+    has_stuck = any(p in lower_for_stuck for p in _STUCK_PATTERNS)
+
+    # Nếu có tin nhắn hỏi thực sự (khác "(không có)"), vẫn coi là đang cần hỗ trợ trừ khi chỉ rời tab
+    has_learner_msg = "tin nhắn hv:" in lower and "tin nhắn hv: (không có)" not in lower
+
+    if has_distracted and not has_stuck and not has_learner_msg and not is_quiz_answer_request and not is_out_of_scope:
         signal_type = "distracted_or_normal"
     else:
         signal_type = "stuck"
@@ -132,11 +180,14 @@ def search_lesson(query: str, segment_code: str = "") -> list:
             ]
 
     q_lower = (query or "").lower()
+    msg_match = re.search(r"tin nhắn hv:\s*(.+)$", q_lower)
+    if msg_match and msg_match.group(1).strip() != "(không có)":
+        q_lower = msg_match.group(1).strip()
     stopwords = {
         "bài", "ngoài", "học", "giải", "thích", "nào", "gì", "như", "với", "cho",
         "của", "và", "trong", "khi", "này", "đó", "là", "có", "không", "được",
         "làm", "cách", "một", "các", "những", "từ", "về", "ở", "nên", "thì",
-        "đang", "vừa", "rồi", "mình", "bạn", "hãy", "xem", "đoạn", "phần",
+        "đang", "vừa", "rồi", "mình", "bạn", "hãy", "xem", "đoạn", "phần", "giúp",
     }
     tokens = [
         t for t in re.findall(r"[0-9a-zA-ZÀ-ỹ_-]+", q_lower)
@@ -161,7 +212,7 @@ def search_lesson(query: str, segment_code: str = "") -> list:
         for tok in tokens:
             if tok in haystack_tokens:
                 score += 1
-        if score >= 3:
+        if score >= 4:
             scored.append((score, item))
 
     scored.sort(key=lambda pair: pair[0], reverse=True)

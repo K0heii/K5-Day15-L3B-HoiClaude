@@ -153,6 +153,7 @@ flowchart TD
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
 | 27/11 20:32 | Mở rộng `eval/benchmark.csv` từ 12 câu lên 24 câu (chỉ thêm mới `B13`–`B24`, giữ nguyên `B01`–`B12` và chuẩn "đạt") | Đáp ứng mốc CP3 (20–30 câu), phủ đủ 12/12 đoạn `data/lessons.json` và bổ sung thêm các ca thực tế từ `P1`, `P4`, `answers.csv`, `chat.csv`, `events.csv` (11/24 nguồn thật = 45,8%) |
+| 27/11 23:56 | Cải tiến `codebase/tools.py`: xử lý cụm phủ định (`không sai quiz`, `chưa tua lại`), lọc query theo `Tin nhắn HV:` để kích hoạt đúng G10, và tách câu hỏi khái niệm (`tại sao`/`vì sao`) khỏi bộ lọc cấm | Sửa cả 3 nhóm lỗi Lượt 1 (`eval/report.md`): Nhóm 1 (`B03`, `B08`, `B19`), Nhóm 2 (`B06`, `B22`), Nhóm 3 (`B18`) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
