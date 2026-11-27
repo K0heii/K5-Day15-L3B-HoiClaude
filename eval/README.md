@@ -11,18 +11,18 @@ Tóm tắt từ `data/DATA_CARD.md`:
 
 ## 2. Bộ câu thử dựng ra sao
 
-- `eval/benchmark.csv`: **12 câu (bản CP2; mở rộng lên 20–30 câu ở CP3)** (`thuong` 5 · `kho` 5 · `tu_choi` 2, trong đó 2 câu tấn công `B11`, `B12`).
-- Nguồn (`python run.py check` in sẵn): `nguoi_dung` 4 *(từ P3 và khảo sát người dùng thật #1, #3)* · `data_that` 1 *(từ `data/preclass/`)* · `tu_viet` 7 · `sinh_seed` 0 → từ người dùng / data thật **5/12 (41,7%, vượt chuẩn ≥1/3)**.
+- `eval/benchmark.csv`: **24 câu (bản CP3)** (`thuong` 12 · `kho` 8 · `tu_choi` 4, trong đó 3 câu tấn công `B11`, `B12`, `B24` và 1 câu ngoài phạm vi làm hộ code `B23`).
+- Nguồn (`python run.py check` in sẵn): `nguoi_dung` 6 *(từ P1, P3, P4 và khảo sát #1, #3)* · `data_that` 5 *(từ `data/preclass/`: `answers.csv`, `chat.csv`, `events.csv`)* · `tu_viet` 13 · `sinh_seed` 0 → từ người dùng / data thật **11/24 (45,8%, vượt chuẩn ≥1/3)**.
 - Độ phủ — lưới input 4 chiều:
-  1. **Trạng thái hành vi:** đọc bình thường · dừng lâu + tua lại · sai quiz lần 1/2 · rời tab · dừng tập trung đọc code/ghi chép.
-  2. **Bài học / mã đoạn (khớp `data/lessons.json`):** Day 06 (`D06-S01`, `D06-S02`), Day 08 (`D08-S01`, `D08-S02`), Day 10 (`D10-S02`), Day 12 (`D12-S01`, `D12-S02`), Day 13 (`D13-S03`), và ngoài bài (`B06`).
+  1. **Trạng thái hành vi:** đọc bình thường · dừng lâu + tua lại · sai quiz lần 1/2 · bỏ qua quiz rồi tua ngược · rời tab · dừng tập trung đọc code/ghi chép · câu hỏi cực ngắn `??`.
+  2. **Bài học / mã đoạn (phủ 12/12 đoạn `data/lessons.json`):** Day 06 (`D06-S01..S03`), Day 08 (`D08-S01..S02`), Day 10 (`D10-S01..S02`), Day 12 (`D12-S01..S02`), Day 13 (`D13-S01..S03`), và ngoài bài (`B06`, `B22`).
   3. **Kiểu tương tác:** chủ động theo tín hiệu (không tin nhắn) vs học viên hỏi ngắn trong chat.
-  4. **Mức độ rủi ro:** bình thường · mơ hồ · đòi đáp án/tóm tắt cả bài · tấn công prompt injection / vượt quyền.
+  4. **Mức độ rủi ro:** bình thường · mơ hồ · thiếu căn cứ · đòi đáp án/tóm tắt cả bài/viết code hộ · tấn công prompt injection (tiếng Việt & tiếng Anh) / vượt quyền.
 - Câu `kho` & `tu_choi` trỏ về 4 lớp chỗ khó (`spec.md` §5):
-  - Lớp 1 (nguồn sự thật): `B06`
-  - Lớp 2 (mơ hồ / thiếu thông tin): `B07`, `B08`
-  - Lớp 3 (ngoài phạm vi / thẩm quyền): `B10`, `B11`, `B12`
-  - Lớp 4 (đặc thù lĩnh vực): `B05`, `B09`, `B10`, `B11`
+  - Lớp 1 (nguồn sự thật): `B06`, `B22`
+  - Lớp 2 (mơ hồ / thiếu thông tin): `B07`, `B08`, `B20`
+  - Lớp 3 (ngoài phạm vi / thẩm quyền): `B10`, `B11`, `B12`, `B23`, `B24`
+  - Lớp 4 (đặc thù lĩnh vực): `B05`, `B09`, `B10`, `B11`, `B21`, `B24`
 
 ## 3. Metric và cách chấm
 
