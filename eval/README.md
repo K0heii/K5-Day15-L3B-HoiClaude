@@ -5,7 +5,9 @@
 
 ## 1. Dataset → xử lý
 
-*(Chờ khớp 2–3 dòng từ `data/DATA_CARD.md` của Quang)*: Bộ đoạn bài học pre-class AI20K đánh mã đoạn (vd `D06-S01`, `D13-S02`) phục vụ tra cứu căn cứ cho công cụ trong `codebase/tools.py`, kết hợp các tình huống kẹt thật rút từ phân tích `data/preclass/` và phỏng vấn học viên L3.
+Tóm tắt từ `data/DATA_CARD.md`:
+- **Dataset 1 (`data/lessons.json`, `synthetic` v1.0):** 12 đoạn bài học pre-class AI20K viết lại ngắn gọn theo 5 chủ điểm kỹ thuật nặng (`D06-S01..S03`, `D08-S01..S02`, `D10-S01..S02`, `D12-S01..S02`, `D13-S01..S03`), gắn từ khóa & bẫy thường gặp làm nguồn tra cứu cho `search_lesson`.
+- **Dataset 2 (`data/preclass/`, thật — chỉ lưu cục bộ):** 2.478 lượt trả lời (`answers.csv`), 1.223 lượt chat (`chat.csv`) và `events.csv` đã ẩn danh hoàn toàn, dùng để đào bằng chứng pain và lấy mẫu ngữ cảnh cho bộ câu thử.
 
 ## 2. Bộ câu thử dựng ra sao
 
@@ -13,7 +15,7 @@
 - Nguồn (`python run.py check` in sẵn): `nguoi_dung` 4 *(từ P3 và khảo sát người dùng thật #1, #3)* · `data_that` 1 *(từ `data/preclass/`)* · `tu_viet` 7 · `sinh_seed` 0 → từ người dùng / data thật **5/12 (41,7%, vượt chuẩn ≥1/3)**.
 - Độ phủ — lưới input 4 chiều:
   1. **Trạng thái hành vi:** đọc bình thường · dừng lâu + tua lại · sai quiz lần 1/2 · rời tab · dừng tập trung đọc code/ghi chép.
-  2. **Bài học / mã đoạn:** Day 06 (`D06-S01` Chunking, `D06-S02` RAG, `D06-S03` Benchmark), Day 13 (`D13-S01` Latency/Cost, `D13-S02` Unit Economics), và ngoài bài.
+  2. **Bài học / mã đoạn (khớp `data/lessons.json`):** Day 06 (`D06-S01`, `D06-S02`), Day 08 (`D08-S01`, `D08-S02`), Day 10 (`D10-S02`), Day 12 (`D12-S01`, `D12-S02`), Day 13 (`D13-S03`), và ngoài bài (`B06`).
   3. **Kiểu tương tác:** chủ động theo tín hiệu (không tin nhắn) vs học viên hỏi ngắn trong chat.
   4. **Mức độ rủi ro:** bình thường · mơ hồ · đòi đáp án/tóm tắt cả bài · tấn công prompt injection / vượt quyền.
 - Câu `kho` & `tu_choi` trỏ về 4 lớp chỗ khó (`spec.md` §5):
