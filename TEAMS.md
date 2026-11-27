@@ -4,16 +4,17 @@
 > Giữ nguyên tên file `TEAMS.md` ở thư mục gốc repo, giữ nguyên các dòng `- Tên nhóm:` … và tiêu đề cột của bảng. Chỉ thay chỗ `____`.
 > Kiểm bằng `python run.py check`: phần "Kiểm TEAMS.md" không báo gì là đúng format.
 
-- Tên nhóm: ____
-- Lớp: ____
-- Track: ____
-- Link repo: ____
+- Tên nhóm: HoiClaude
+- Lớp: L3B
+- Track: A
+- Link repo: https://github.com/K0heii/K5-Day15-L3B-HoiClaude
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 | ____ | ____ | Đội trưởng | ____ |
-| 2 | ____ | ____ | Thành viên | ____ |
-| 3 | ____ | ____ | Thành viên | ____ |
+| 1 | Nguyễn Như Duy An | 2A202603783 | Đội trưởng | Điều phối nhóm, nộp checkpoint, đào bằng chứng `evidence/` & tính Impact (`spec.md` §1–§2), tổng hợp slide |
+| 2 | Nguyễn Minh Quang | 2A202603791 | Thành viên | Thiết kế kiến trúc (`spec.md` §4), chuẩn hoá dữ liệu `data/DATA_CARD.md`, phát triển lõi `codebase/` (`agent.py`, `tools.py`, `ai.py`) |
+| 3 | Đào Văn Hiệp | 2A202603813 | Thành viên | Thiết kế bộ câu thử `eval/benchmark.csv`, metric & chuẩn đạt (`eval/metric_spec.yaml`, `spec.md` §5–§7), báo cáo đánh giá lượt 1–2 |
+| 4 | Lã Thái Minh | 2A202603756 | Thành viên | Mô phỏng chi phí (`cost/`), phỏng vấn & thử nghiệm người dùng (`validation/log.md`), hỗ trợ slide & video demo dự phòng |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.
