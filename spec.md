@@ -129,15 +129,15 @@ flowchart TD
 - Kết quả: lượt 1 **18/24 (75%)** (`thuong` 9/12 · `kho` 5/8 · `tu_choi` 4/4 — chưa đạt chuẩn ≥80%; lượt 2 lặp kiểm chứng cùng cấu hình: **18/24 = 75%**) · lượt sau cải tiến (lượt 3) **24/24 (100%)** (`thuong` 12/12 · `kho` 8/8 · `tu_choi` 4/4 — **đạt chuẩn**) — run ID: `run-1@20261127-211417` / `run-3@20261128-000606` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
-- Chi phí / task thành công: __ (model __) · __ (model __)
-- Chi phí / tháng ở quy mô thật: thấp __ · cơ sở __ · cao __ → chi tiết `cost/cost-estimate.md`
-- So với impact / người / tháng (§2): đáng làm không, vì sao:
+- Ba persona và giá hai model ở `cost/personas.yaml`; mô phỏng `cost/simulate-2.csv` (`simulate-2@20261128-002614`) hoàn tất **50/50 phiên không lỗi**, dùng tỷ lệ đạt **24/24** từ `eval/run-3.csv`.
+- Chi phí/task đạt: **0,00037 USD** (Gemini 3.5 Flash-Lite) hoặc **0,0014 USD** (kịch bản giá Gemini 4 Hydrogen với cùng lượng token). Tỷ lệ 100% chỉ đo trên 24 câu thử cố định.
+- Chi phí API/tháng theo quy mô thấp/cơ sở/cao (300/700/1.000 người dùng; mức 300 tự ước tính, hai mức còn lại theo quy mô khóa): **0,7306 / 1,70 / 2,44 USD** với Flash-Lite; **2,79 / 6,51 / 9,30 USD** theo giá Hydrogen. Chi tiết và giới hạn: `cost/cost-estimate.md`.
+- §2 nêu cơ hội tác động **140 giờ kẹt/tháng** (tự ước tính, chưa đo được thời gian tiết kiệm). Chi phí API mô phỏng 1,70 USD/tháng ở quy mô cơ sở đủ thấp để thí điểm có đo lường; chưa có bằng chứng sử dụng thật để quyết định triển khai rộng. Chưa tính hosting, lưu trữ, giám sát và công người duyệt.
 
 ## §9. Rủi ro & an toàn
-- Dữ liệu: đã ẩn danh gì, không thu gì, không đưa gì vào model gói miễn phí:
-- AI **không được** làm gì kể cả khi người dùng yêu cầu:
-- Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào:
+- **Dữ liệu:** Bản chạy thử đọc 12 đoạn bài rút gọn, gắn mã trong `data/lessons.json` và tín hiệu hành vi mô phỏng bằng text; không kết nối tài khoản học viên hay ghi/sửa dữ liệu lớp. Không đưa nguyên `data/preclass/`, tên, email, số điện thoại hoặc API key vào prompt hay video demo. Khi thử thật, người dùng chỉ nhập tình huống đã khử nhận dạng; kho bài và dữ liệu nguồn được mô tả trong `data/DATA_CARD.md`.
+- **AI không được làm:** tiết lộ đáp án quiz, làm hộ/tóm tắt cả bài, sửa điểm hoặc tiến độ, tự gửi tin ra ngoài. Yêu cầu vượt phạm vi bị chặn trước khi gọi model; nếu không tìm được đoạn bài phù hợp thì báo thiếu căn cứ, không tự gắn mã đoạn khác (`codebase/agent.py`, `codebase/tools.py`).
+- **Người có thể bị hại:** học viên đang tập trung có thể bị thẻ gợi ý làm phiền; học viên đang kẹt có thể hiểu sai nếu AI bịa nội dung. Luồng hiện tại im lặng khi tín hiệu đọc/ghi chép bình thường, chỉ tạo thẻ nháp bên lề có mã đoạn để học viên tự đối chiếu và gạt bỏ. Lượt eval sau cải tiến đạt 24/24 trên bộ 24 câu, nhưng đây là đầu vào mô phỏng; cần thử với người dùng thật và câu lạ trước khi tích hợp vào trang học (`eval/report.md`, `validation/log.md`).
 
 ## §10. Phân công & changelog
 - Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"):
@@ -154,6 +154,7 @@ flowchart TD
 |---|---|---|
 | 27/11 20:32 | Mở rộng `eval/benchmark.csv` từ 12 câu lên 24 câu (chỉ thêm mới `B13`–`B24`, giữ nguyên `B01`–`B12` và chuẩn "đạt") | Đáp ứng mốc CP3 (20–30 câu), phủ đủ 12/12 đoạn `data/lessons.json` và bổ sung thêm các ca thực tế từ `P1`, `P4`, `answers.csv`, `chat.csv`, `events.csv` (11/24 nguồn thật = 45,8%) |
 | 27/11 23:56 | Cải tiến `codebase/tools.py`: xử lý cụm phủ định (`không sai quiz`, `chưa tua lại`), lọc query theo `Tin nhắn HV:` để kích hoạt đúng G10, và tách câu hỏi khái niệm (`tại sao`/`vì sao`) khỏi bộ lọc cấm | Sửa cả 3 nhóm lỗi Lượt 1 (`eval/report.md`): Nhóm 1 (`B03`, `B08`, `B19`), Nhóm 2 (`B06`, `B22`), Nhóm 3 (`B18`) |
+| 28/11 00:46 | Chạy mô phỏng 50 phiên từ `eval/run-3.csv`, điền chi phí và giới hạn vào `cost/cost-estimate.md` + §8–§9; tạo `demo-slides.pdf` 8 trang | `cost/simulate-2-summary.md`: 50/50 phiên không lỗi; `eval/run-3.csv`: 24/24. Lượt mô phỏng 1 có 28 lỗi HTTP 429 nên không dùng để ước tính |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

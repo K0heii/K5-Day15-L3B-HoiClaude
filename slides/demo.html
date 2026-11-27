@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>HoiClaude — Demo CP4</title>
+<style>
+@page { size: 13.333in 7.5in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #091b1c; color: #ecf2ea; font-family: "Segoe UI", Arial, sans-serif; }
+section { width: 13.333in; height: 7.5in; padding: 0.54in 0.65in 0.43in; page-break-after: always; position: relative; overflow: hidden; background: #091b1c; }
+section:last-child { page-break-after: auto; }
+.eyebrow { color: #88d4bd; text-transform: uppercase; letter-spacing: .12em; font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+h1 { font-size: 49px; line-height: 1.1; margin: 0 0 30px; font-weight: 720; max-width: 1050px; }
+h2 { font-size: 33px; line-height: 1.15; margin: 0 0 18px; color: #a8e9d5; }
+p, li { font-size: 25px; line-height: 1.32; }
+p { margin: 0 0 17px; }
+strong { color: #b8f1dc; }
+.muted { color: #b2c4c0; }
+.big { font-size: 70px; line-height: 1; font-weight: 760; color: #9be7cb; margin-bottom: 12px; }
+.row { display: flex; gap: 34px; align-items: flex-start; }
+.col { flex: 1; min-width: 0; }
+.rule { border-top: 2px solid #37625a; padding-top: 20px; }
+.quote { font-size: 31px; line-height: 1.32; max-width: 1120px; margin-top: 40px; }
+table { border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 24px; }
+th, td { text-align: left; border-bottom: 1px solid #37625a; padding: 14px 12px; vertical-align: top; }
+th { color: #9be7cb; font-weight: 650; }
+.small { font-size: 19px; line-height: 1.3; }
+.flow { display: flex; gap: 15px; margin-top: 40px; }
+.step { flex: 1; border-top: 4px solid #91dec6; padding-top: 15px; font-size: 24px; line-height: 1.25; }
+.step b { display: block; color: #9be7cb; font-size: 18px; margin-bottom: 10px; }
+.footer { position: absolute; bottom: 22px; left: 0.65in; right: 0.65in; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #37625a; padding-top: 10px; color: #91a9a3; font-size: 17px; }
+.accent { color: #9be7cb; }
+</style>
+</head>
+<body>
+<section>
+  <div class="eyebrow">01 · Người dùng và pain</div>
+  <h1>Học viên kẹt ở một đoạn bài, rồi mất mạch học</h1>
+  <div class="row">
+    <div class="col"><div class="big">174/436</div><p>học viên hoạt động có ít nhất một dấu hiệu kẹt rõ trong 21 ngày.</p></div>
+    <div class="col"><div class="big">70,4%</div><p>phản hồi AI trong log không có mốc trích dẫn để đối chiếu bài.</p></div>
+  </div>
+  <p class="quote">“Mở tab ngoài hỏi ChatGPT ... đến lúc quay lại trang pre-class thì quên mất mạch bài giảng phía trước.”</p>
+  <div class="footer"><span>Nguồn: evidence/summary.md §2–3; phỏng vấn P1</span><span>1 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">02 · Quyết định chọn</div>
+  <h1>Ưu tiên gỡ kẹt ngay trong mạch học</h1>
+  <div class="big">~140 giờ/tháng</div>
+  <p>Impact ước tính cho khối L3: <strong>~280 người × 2 lần kẹt nặng/tháng × 15 phút</strong>.</p>
+  <div class="rule row" style="margin-top:30px">
+    <div class="col"><h2>Chọn</h2><p>Thẻ gợi ý ngắn bên lề, có mã đoạn bài, chỉ hiện khi có tín hiệu kẹt rõ.</p></div>
+    <div class="col"><h2>Loại</h2><p>Webcam và extension: khó tích hợp trong thời gian hackathon, thêm rủi ro riêng tư.</p></div>
+  </div>
+  <div class="footer"><span>Nguồn: spec.md §2; evidence/summary.md</span><span>2 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">03 · Giải pháp</div>
+  <h1>Một quyết định: im lặng hay gỡ kẹt đúng một kiểu</h1>
+  <div class="flow">
+    <div class="step"><b>01</b>Đọc tín hiệu học và yêu cầu</div>
+    <div class="step"><b>02</b>Tra đoạn bài có mã nguồn</div>
+    <div class="step"><b>03</b>AI chọn ẩn dụ, sơ đồ hoặc câu hỏi</div>
+    <div class="step"><b>04</b>Thẻ nháp bên lề; học viên tự quyết</div>
+  </div>
+  <p style="margin-top:55px">Không có căn cứ → nói rõ thiếu bài. Xin đáp án quiz → từ chối và dẫn lại đoạn học.</p>
+  <div class="footer"><span>Nguồn: spec.md §4; codebase/agent.py; codebase/tools.py</span><span>3 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">04 · Demo live</div>
+  <h1>Hai ca cho thấy lúc nào trợ lý nên lên tiếng</h1>
+  <div class="row">
+    <div class="col rule"><h2>B01 · Đang kẹt</h2><p>Đọc Chunking hai lần, dừng 45 giây.</p><p class="accent">→ Ẩn dụ ngắn về cắt tài liệu quá nhỏ hoặc quá to, kèm [D08-S01].</p></div>
+    <div class="col rule"><h2>B07 · Rời tab</h2><p>Dừng 180 giây để đi việc riêng.</p><p class="accent">→ Không xen vào; giữ nguyên mạch học.</p></div>
+  </div>
+  <p class="small muted" style="margin-top:40px">Chạy `python run.py` với đầu vào B01 và B07. Video dự phòng cần quay đủ hai ca và kiểm tra quyền xem trước buổi trình bày.</p>
+  <div class="footer"><span>Nguồn: eval/benchmark.csv; eval/run-3.csv; README.md</span><span>4 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">05 · Đánh giá</div>
+  <h1>Cùng 24 câu thử, kết quả sau cải tiến đạt chuẩn đã chốt</h1>
+  <table>
+    <tr><th>Lượt</th><th>Tổng</th><th>Câu thường</th><th>Từ chối</th></tr>
+    <tr><td>1 · run-1</td><td>18/24 · 75%</td><td>9/12 · 75%</td><td>4/4</td></tr>
+    <tr><td>3 · run-3</td><td><strong>24/24 · 100%</strong></td><td><strong>12/12</strong></td><td>4/4</td></tr>
+  </table>
+  <p style="margin-top:30px">Chuẩn đạt: ≥80% tổng, ≥85% câu thường, 100% câu từ chối. Lượt 2 lặp kiểm chứng trước khi sửa: 18/24.</p>
+  <p class="small muted">Lỗi chính lượt 1: bật thẻ khi học viên đang đọc hoặc ghi chép. Mẫu 24 câu còn nhỏ; chưa đo trên học viên dùng thật.</p>
+  <div class="footer"><span>Nguồn: eval/report.md; eval/README.md; spec.md §7</span><span>5 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">06 · Chi phí khi dùng thật</div>
+  <h1>Mô phỏng 50 phiên, so sánh 2 mức giá</h1>
+  <p class="small">50/50 phiên không lỗi; tỷ lệ đạt đầu vào 24/24 trên bộ câu thử cố định.</p>
+  <table>
+    <tr><th>Giá model</th><th>USD / task đạt</th><th>300 người/tháng</th><th>700 người/tháng</th><th>1.000 người/tháng</th></tr>
+    <tr><td>Gemini 3.5 Flash-Lite</td><td>$0.00037</td><td>$0.73</td><td>$1.70</td><td>$2.44</td></tr>
+    <tr><td>Gemini 4 Hydrogen</td><td>$0.0014</td><td>$2.79</td><td>$6.51</td><td>$9.30</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:30px">Đo token trên Gemini 3.5 Flash-Lite, tính thêm kịch bản giá Gemini 4 Hydrogen. Chỉ tính API; chưa gồm vận hành.</p>
+  <div class="footer"><span>Nguồn: cost/personas.yaml; cost/simulate-2-summary.md; eval/run-3.csv</span><span>6 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">07 · Kết luận</div>
+  <h1>Tiếp tục thử với học viên, chưa triển khai rộng</h1>
+  <div class="row">
+    <div class="col"><div class="big">39,9%</div><p>học viên trong log có dấu hiệu kẹt rõ.</p></div>
+    <div class="col"><div class="big">24/24</div><p>câu thử đạt sau một lần cải tiến.</p></div>
+  </div>
+  <p class="rule" style="margin-top:20px">Chi phí API dự kiến thấp so với thời gian kẹt ước tính. Cần đo tỉ lệ học viên thực sự đọc, hiểu và gạt bỏ thẻ trong buổi thử thật.</p>
+  <div class="footer"><span>Nguồn: evidence/summary.md; eval/report.md; cost/cost-estimate.md</span><span>7 / 8</span></div>
+</section>
+<section>
+  <div class="eyebrow">08 · Nếu có thêm một tuần</div>
+  <h1>Kiểm thử ngoài bộ câu hiện tại</h1>
+  <div class="rule"><h2>01 · Ý định diễn đạt khác</h2><p>Thử thêm câu xin đáp án viết vòng vo, sai chính tả hoặc không dấu.</p></div>
+  <div class="rule"><h2>02 · Độ phủ bài học</h2><p>Bổ sung đoạn học có mã nguồn cho những ngày chưa nằm trong kho 12 đoạn.</p></div>
+  <div class="rule"><h2>03 · Tín hiệu dùng thật</h2><p>Đo xem học viên mở hay gạt bỏ thẻ; quan sát chỗ thẻ gây phiền.</p></div>
+  <div class="footer"><span>Nguồn: eval/report.md §4; data/DATA_CARD.md</span><span>8 / 8</span></div>
+</section>
+</body>
+</html>
