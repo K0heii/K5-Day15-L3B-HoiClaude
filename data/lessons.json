@@ -1,0 +1,110 @@
+[
+  {
+    "code": "D06-S01",
+    "day": "Day 06",
+    "topic": "Evaluation & Metric Spec",
+    "title": "Phân biệt Metric Spec và Chuẩn đạt (Threshold)",
+    "keywords": ["metric", "threshold", "chuẩn đạt", "eval", "benchmark", "đo lường", "pass"],
+    "content": "Metric Spec định nghĩa cách đo từng tiêu chí (tên metric, công thức/định nghĩa, người/cách chấm grader, ngưỡng tối thiểu). Chuẩn đạt của hệ thống thường kết hợp tỉ lệ pass tổng thể (ví dụ >= 80%) với điều kiện cứng cho các lỗi nghiêm trọng (0% vi phạm an toàn). Chốt chuẩn đạt trước khi chạy eval giúp tránh sửa tiêu chí cho khớp kết quả sau này.",
+    "common_trap": "Nhầm lẫn giữa việc tăng điểm trung bình chung với việc bỏ qua điều kiện cứng (ví dụ hệ thống đạt 90% nhưng vẫn lộ đáp án hoặc bịa thông tin)."
+  },
+  {
+    "code": "D06-S02",
+    "day": "Day 06",
+    "topic": "Evaluation & Metric Spec",
+    "title": "Precision, Recall và đánh đổi False Positive / False Negative",
+    "keywords": ["precision", "recall", "false positive", "false negative", "nhận diện nhầm", "báo nhầm"],
+    "content": "Precision đo tỉ lệ dự đoán dương tính thực sự đúng (ít báo nhầm - False Positive), còn Recall đo tỉ lệ trường hợp cần bắt mà hệ thống không bỏ sót (ít bỏ lọt - False Negative). Trong trợ lý học tập chủ động, báo nhầm quá nhiều (Precision thấp) làm người học bị phiền và đứt mạch tập trung; vì vậy cần ưu tiên Precision cao ở ngưỡng can thiệp.",
+    "common_trap": "Cố tối đa hóa Recall khiến hệ thống can thiệp liên tục ngay cả khi học viên chỉ đang đọc chậm hoặc ghi chép."
+  },
+  {
+    "code": "D06-S03",
+    "day": "Day 06",
+    "topic": "Evaluation & Metric Spec",
+    "title": "Chống rò rỉ dữ liệu kiểm thử (Data Leakage & Overfitting Prompt)",
+    "keywords": ["leakage", "rò rỉ", "overfitting", "câu thử", "benchmark", "prompt"],
+    "content": "Không được nhúng nguyên văn câu hỏi hoặc đáp án của bộ câu thử (benchmark) vào system prompt hay luật rẽ nhánh cứng. Khi sửa lỗi sau Lượt 1, cần phân tích nhóm lỗi tổng quát và cải tiến nguyên tắc/công cụ chung để hệ thống xử lý tốt cả câu thử lạ chưa từng thấy.",
+    "common_trap": "Viết if-else khớp đúng chuỗi input của 1-2 câu bị trượt trong benchmark để kéo điểm Lượt 2."
+  },
+  {
+    "code": "D08-S01",
+    "day": "Day 08",
+    "topic": "RAG & Grounding",
+    "title": "Chunking và mã đoạn để kiểm chứng nguồn (Grounding)",
+    "keywords": ["chunk", "chunking", "rag", "mã đoạn", "grounding", "trích dẫn", "ngữ cảnh"],
+    "content": "Chia tài liệu thành các đoạn nhỏ (chunk) có ranh giới ý nghĩa rõ ràng và gắn mã định danh duy nhất (như D08-S01) giúp AI truy xuất đúng ngữ cảnh cần thiết thay vì nhồi cả bài dài. Mọi giải thích đưa ra phải gắn kèm mã đoạn nguồn để người học đối chiếu trực tiếp và phát hiện ngay nếu AI suy diễn sai.",
+    "common_trap": "Cắt đoạn quá nhỏ làm mất ngữ cảnh câu trước-sau, hoặc cắt quá to khiến model bị nhiễu và tốn token."
+  },
+  {
+    "code": "D08-S02",
+    "day": "Day 08",
+    "topic": "RAG & Grounding",
+    "title": "Thu hẹp phạm vi và từ chối khi thiếu căn cứ (Abstention)",
+    "keywords": ["hallucination", "bịa", "thiếu căn cứ", "abstention", "không có trong bài", "g10"],
+    "content": "Khi công cụ tìm kiếm không trả về đoạn tài liệu phù hợp hoặc độ tin cậy thấp, model phải thừa nhận chưa có đủ căn cứ trong bài học thay vì tự suy đoán từ kiến thức nền. Nguyên tắc này (G10) giúp giữ tỉ lệ bịa thông tin ở mức 0% trong các tình huống câu hỏi nằm ngoài tài liệu.",
+    "common_trap": "Để model tự trả lời trôi chảy bằng kiến thức tổng quát khi retrieval trả về rỗng."
+  },
+  {
+    "code": "D10-S01",
+    "day": "Day 10",
+    "topic": "Workflow vs Agent",
+    "title": "Chọn Workflow cố định hay Agent tự chủ",
+    "keywords": ["workflow", "agent", "vòng lặp", "tool", "kiến trúc", "cố định"],
+    "content": "Workflow cố định phù hợp khi các bước xử lý đã rõ ràng và có thể kiểm soát chặt (ví dụ: phân tích tín hiệu -> tra đoạn bài -> sinh gợi ý). Agent vòng lặp chỉ nên dùng khi số bước không biết trước; nếu dùng workflow cố định giải quyết được bài toán thì hệ thống dễ kiểm thử, ít lỗi vòng lặp và kiểm soát chi phí tốt hơn.",
+    "common_trap": "Lạm dụng multi-agent hoặc vòng lặp tự chủ cho bài toán chỉ cần 2-3 bước tuần tự cố định."
+  },
+  {
+    "code": "D10-S02",
+    "day": "Day 10",
+    "topic": "Workflow vs Agent",
+    "title": "Chỗ người duyệt (Human-in-the-loop) cho công cụ có tác động",
+    "keywords": ["human in the loop", "duyệt", "tác động ra ngoài", "bản nháp", "draft", "guardrail"],
+    "content": "Mọi công cụ có thể làm thay đổi trạng thái hệ thống hoặc gửi thông tin ra ngoài (như sửa điểm, gửi tin nhắn, chốt hoàn thành) không được phép tự thực thi. AI chỉ được tạo bản nháp hoặc đề xuất để người dùng tự quyết định xem, chấp nhận hoặc gạt bỏ.",
+    "common_trap": "Cho phép tool tự động cập nhật tiến độ hoặc gửi phản hồi thay mặt học viên mà không qua xác nhận."
+  },
+  {
+    "code": "D12-S01",
+    "day": "Day 12",
+    "topic": "Cost & Token Economics",
+    "title": "Ước lượng chi phí theo Token vào/ra và tỉ lệ thành công",
+    "keywords": ["token", "chi phí", "cost", "pricing", "tokens_in", "tokens_out", "simulate"],
+    "content": "Chi phí thực tế của một hệ thống AI không chỉ tính trên giá mỗi lượt gọi mà phải tính trên mỗi task thành công (Cost per Successful Task). Token đầu ra (tokens_out) thường đắt hơn token đầu vào (tokens_in) nhiều lần, nên giới hạn độ dài câu trả lời vừa giúp học viên đỡ quá tải vừa giảm mạnh chi phí.",
+    "common_trap": "Chỉ lấy số token của 1 lần gọi trung bình nhân với số người dùng mà quên tính các lượt thất bại hoặc gọi lặp."
+  },
+  {
+    "code": "D12-S02",
+    "day": "Day 12",
+    "topic": "Cost & Token Economics",
+    "title": "Phân tầng xử lý bằng luật trước khi gọi Model (Model Routing)",
+    "keywords": ["routing", "phân tầng", "tiết kiệm", "chi phí", "rule", "lọc trước"],
+    "content": "Những quyết định rõ ràng bằng tín hiệu cấu trúc (như học viên rời tab đi việc riêng hoặc xin thẳng đáp án quiz) có thể lọc bằng luật/công cụ nhẹ trước khi gọi LLM. Cách này giúp tiết kiệm 100% token cho các ca không cần AI và giữ độ trễ phản hồi ở mức tối thiểu.",
+    "common_trap": "Đẩy mọi sự kiện chuột/bàn phím hoặc mọi câu hỏi thẳng lên LLM lớn gây lãng phí token và chậm."
+  },
+  {
+    "code": "D13-S01",
+    "day": "Day 13",
+    "topic": "Learning Science & Safety",
+    "title": "Quá tải nhận thức (Cognitive Load) và Scaffolding vừa đủ",
+    "keywords": ["quá tải nhận thức", "cognitive load", "scaffolding", "gỡ kẹt", "ẩn dụ", "gợi mở"],
+    "content": "Khi gặp đoạn kiến thức kỹ thuật mới dày đặc khái niệm, bộ nhớ làm việc của người học dễ bị quá tải (Cognitive Overload), dẫn đến dừng lâu hoặc tua lại liên tục. Hỗ trợ đúng lúc (Scaffolding) chỉ nên đưa ra đúng 1 điểm tựa ngắn gọn — như ẩn dụ đời thường, sơ đồ nhỏ hoặc 1 câu hỏi gợi mở — rồi rút lui để người học tự nối tiếp mạch tư duy.",
+    "common_trap": "Đổ ra một bài giải thích dài 500 chữ khiến người học càng thêm quá tải khi đang kẹt."
+  },
+  {
+    "code": "D13-S02",
+    "day": "Day 13",
+    "topic": "Learning Science & Safety",
+    "title": "Chống học thụ động (Cognitive Offloading) và cấm lộ đáp án",
+    "keywords": ["cognitive offloading", "thụ động", "đáp án", "quiz", "giải hộ", "lộ đáp án"],
+    "content": "Nếu AI trả lời trực tiếp đáp án câu kiểm tra hoặc tóm tắt trọn vẹn cả bài, người học sẽ rơi vào trạng thái ỷ lại (Cognitive Offloading) và không tự hình thành hiểu biết thực sự. Vì vậy trợ lý gỡ kẹt tuyệt đối không được nêu đáp án đúng/sai của quiz mà chỉ dẫn hướng về khái niệm nền trong đoạn bài.",
+    "common_trap": "Chiều theo yêu cầu 'chọn giúp mình A hay B' của người dùng để làm tăng sự hài lòng ngắn hạn."
+  },
+  {
+    "code": "D13-S03",
+    "day": "Day 13",
+    "topic": "Learning Science & Safety",
+    "title": "Phân biệt tín hiệu kẹt thực sự với việc rời tab hoặc đọc bình thường",
+    "keywords": ["rời tab", "tín hiệu", "hành vi", "dừng lâu", "tua lại", "không xen vào"],
+    "content": "Thời gian dừng trên trang có thể do nhiều nguyên nhân: đang kẹt kiến thức, đang ghi chép tay, hoặc rời tab đi làm việc riêng. Hệ thống chỉ can thiệp khi có tổ hợp tín hiệu kẹt rõ ràng (ví dụ tua lại nhiều lần ở cùng đoạn hoặc vừa làm sai câu kiểm tra); nếu chỉ rời tab hoặc đang đọc bình thường thì giữ im lặng.",
+    "common_trap": "Cứ thấy dừng quá 60 giây là bật pop-up hỏi thăm gây phiền khi người học đang tập trung ghi chú."
+  }
+]
