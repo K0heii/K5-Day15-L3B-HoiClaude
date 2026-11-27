@@ -46,31 +46,58 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): `data/prec
   - *Dùng nhiều (≥7 ngày/21 ngày — 12,6% HV):* ~12–16 phiên/tháng (~25–35 lượt/tháng).
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
-- [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
+- **Chatbot trợ giảng bị động dưới bài trên `preclass-online.com`:** Đáng học ở chỗ đặt ngay cạnh bài học, không cần chuyển trang · Đáng né ở chỗ chỉ chờ học viên tự nghĩ ra câu hỏi và trả lời dài dạng văn bản · Mình khác ở chỗ đọc tín hiệu kẹt để gợi ý chủ động đúng 1 kiểu gỡ kẹt ngắn gọn gắn mã đoạn.
+- **Mở tab ngoài hỏi ChatGPT / Gemini / Google:** Đáng học ở chỗ giải thích linh hoạt bằng ví dụ đời thường · Đáng né ở chỗ làm đứt mạch tập trung, dễ bịa ngoài phạm vi bài học và dễ dẫn tới hỏi hộ đáp án quiz · Mình khác ở chỗ khóa chặt căn cứ vào `data/lessons.json` (`[DXX-SYY]`) và chặn 100% lộ đáp án quiz.
+- **Extension giám sát webcam / theo dõi chuyển động mắt:** Đáng học ở chỗ phát hiện sớm sự mất tập trung · Đáng né ở chỗ xâm phạm quyền riêng tư, nặng về cài đặt kỹ thuật và dễ báo nhầm khi học viên chỉ nhìn xuống ghi chép · Mình khác ở chỗ dùng tín hiệu hành vi học tập thuần (tua lại, dừng lâu tại đoạn, sai quiz) và luôn cho phép gạt bỏ ngay.
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
-- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả):
-- Không làm (≥3 điều):
-- **Sơ đồ** (ảnh / Mermaid / draw.io): [chèn ở đây]
-- **Hình dạng:** [ ] workflow cố định · [ ] một agent · [ ] nhiều agent — 2 dòng lý do, và vì sao **không** chọn hình dạng phức tạp hơn:
+- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): Một học viên L3 đang học bài pre-class gặp dấu hiệu kẹt ở một đoạn kiến thức (dừng lâu / tua lại nhiều lần / vừa làm sai câu kiểm tra) · cần hiểu đúng ý cốt lõi ngay tại đoạn đó mà không đứt mạch · AI đọc ngữ cảnh đoạn bài + tín hiệu hành vi để quyết định **không xen vào** hay **can thiệp đúng 1 kiểu gỡ kẹt** (ẩn dụ đời thường / sơ đồ Mermaid ngắn / 1 câu hỏi gợi mở, bắt buộc kèm mã đoạn bài, không lộ đáp án) · học viên hiểu nhanh ý cốt lõi, kiểm chứng ngay tại đoạn bài và tự trả lời được câu kiểm tra.
+- **Không làm (≥3 điều):**
+  1. Không dùng webcam, micro hay cài browser extension theo dõi thiết bị cá nhân.
+  2. Không giải hộ, gợi ý trực tiếp đáp án A/B/C/D của quiz hay tự động chấm/sửa điểm.
+  3. Không tóm tắt trọn vẹn cả bài học hoặc bịa thêm kiến thức nằm ngoài đoạn bài trong `data/lessons.json`.
+  4. Không tự ý gửi tin nhắn ra ngoài hoặc thay đổi tiến độ học của học viên.
+- **Sơ đồ kiến trúc:**
+```mermaid
+flowchart TD
+    A["Đầu vào: Ngữ cảnh đoạn bài + Tín hiệu hành vi / Câu hỏi"] --> B["Bước 1: parse_learner_signal()"]
+    B --> C{"Xin đáp án quiz hoặc ngoài phạm vi?"}
+    C -- Có --> D["Từ chối an toàn (0% lộ đáp án) + nhắc đoạn bài"]
+    C -- Không --> E{"Tín hiệu là rời tab / đọc bình thường?"}
+    E -- Có --> F["Không xen vào (giữ nguyên mạch học)"]
+    E -- Không (kẹt rõ ràng) --> G["Bước 2: search_lesson() tra data/lessons.json"]
+    G --> H{"Có đoạn bài khớp?"}
+    H -- Không --> I["G10: Thu hẹp phạm vi — báo thiếu căn cứ, không bịa"]
+    H -- Có --> J["Bước 3: call_model() chọn đúng 1 kiểu gỡ kẹt + trích mã [DXX-SYY]"]
+    J --> K["Bước 4: draft_scaffolding_card() tạo thẻ nháp bên lề"]
+    K --> L["Học viên tự đọc, đối chiếu đoạn bài hoặc gạt bỏ"]
+```
+- **Hình dạng:** `[x] workflow cố định` · [ ] một agent · [ ] nhiều agent — Luồng xử lý gồm 4 bước tuần tự rõ ràng (lọc tín hiệu → tra căn cứ → gọi AI chọn 1 kiểu gỡ kẹt → đóng gói thẻ nháp), dễ kiểm soát chi phí token và hành vi an toàn. Không chọn vòng lặp agent tự chủ hay nhiều agent vì không cần AI tự quyết định thêm bước gọi tool, tránh rủi ro lặp vô hạn và tăng độ trễ khi học viên đang học.
 - **AI dựa vào đâu** — mỗi công cụ (khớp `codebase/tools.py`):
 
   | Công cụ | Input | Output | Tác động ra ngoài? |
   |---|---|---|---|
-  |  |  |  |  |
+  | `parse_learner_signal(text)` | Chuỗi đầu vào gồm câu hỏi và/hoặc tín hiệu hành vi (`str`) | `dict` gồm `signal_type`, `segment_code`, `is_quiz_answer_request`, `is_out_of_scope`, `query` | Không |
+  | `search_lesson(query, segment_code)` | Từ khoá tìm kiếm (`str`) và mã đoạn tuỳ chọn (`str`) | Danh sách tối đa 3 đoạn bài khớp `{"code", "day", "topic", "title", "content", "common_trap"}` | Không |
+  | `draft_scaffolding_card(segment_code, mode, body)` | Mã đoạn (`str`), kiểu gỡ kẹt (`str`), nội dung thẻ (`str`) | `dict` bản nháp thẻ gợi ý `{"status", "segment_code", "mode", "card_text"}` | Không (chỉ tạo bản nháp hiển thị tại chỗ, học viên tự xem/gạt bỏ) |
 
-- **Mức tự động:** [ ] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — lý do (sai thì ai chịu gì, sửa đắt hay rẻ):
-- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì):
-- **Chỗ người duyệt** (việc AI không được tự làm):
+- **Mức tự động:** `[x] AI gợi ý, người quyết` · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — Nếu AI báo nhầm lúc học viên không kẹt sẽ gây phiền và đứt mạch; nếu AI hiểu sai ý sẽ làm học viên hiểu lệch kiến thức, nên thẻ gợi ý phải hiển thị ở dạng bản nháp nhẹ bên lề để học viên tự quyết định đọc hay gạt bỏ ngay.
+- **Chỗ chặn rủi ro:**
+  1. Cổng lọc đầu vào ở `parse_learner_signal` chặn ngay yêu cầu xin đáp án quiz / tóm tắt cả bài / sửa điểm trước khi gọi model.
+  2. `SYSTEM` prompt + kiểm tra đầu ra ở `agent.py` ép buộc chỉ chọn 1 kiểu gỡ kẹt dựa trên đoạn bài trả về từ `search_lesson`, kèm mã `[DXX-SYY]`.
+- **Chỗ người duyệt:** Học viên tự quyết định chấp nhận đọc, đối chiếu lại đoạn bài hoặc bấm gạt bỏ thẻ gợi ý; AI tuyệt đối không tự nộp bài quiz, không tự sửa điểm hay đánh dấu hoàn thành bài học.
 - **Nguyên tắc thiết kế** (≥3, bắt buộc G10):
 
   | Nguyên tắc | Chỗ cụ thể trên sơ đồ / trong bản chạy thử |
   |---|---|
-  | G10 — thu hẹp phạm vi khi không chắc |  |
-  |  |  |
-  |  |  |
+  | G10 — thu hẹp phạm vi khi không chắc | Nhánh `Không có đoạn bài khớp` sau `search_lesson()` trong `agent.py` dừng ngay, báo thiếu căn cứ thay vì gọi model tự bịa; nhánh `rời tab / đọc bình thường` chọn không xen vào. |
+  | Grounding bắt buộc kèm mã nguồn | `search_lesson()` luôn trả về `code` (`DXX-SYY`) và `agent.py` yêu cầu thẻ gợi ý gắn mã đoạn để học viên kiểm chứng tại chỗ. |
+  | Chống học thụ động (0% lộ đáp án) | Cổng `is_quiz_answer_request` ở `parse_learner_signal()` và ràng buộc `SYSTEM` prompt cấm nêu đáp án đúng/sai hoặc tóm tắt trọn bài. |
 
-- Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…) — ghi rõ, không giả làm thật:
+- **Phần nào còn giả (ghi rõ ở mốc CP2):**
+  1. Ở cấu hình mặc định chưa điền `.env`, `codebase/ai.py` chạy chế độ giả (`MODEL_PROVIDER=fake`, token = 0) để đi hết luồng trước CP2; sẽ nối model thật ở CP3.
+  2. Tín hiệu hành vi (dừng lâu, tua lại, rời tab, sai quiz) được truyền qua chuỗi text mô phỏng trong `input` thay vì đọc trực tiếp từ trình duyệt `preclass-online.com`.
+  3. Kho bài học `data/lessons.json` gồm 12 đoạn viết lại/rút gọn ở 5 chủ điểm tiêu biểu, chưa bao phủ toàn bộ các ngày của khoá AI20K.
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
 
