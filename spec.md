@@ -22,19 +22,28 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): `data/prec
   - *Hỏng ở đâu:* Khi đang quá tải nhận thức, học viên khó diễn đạt đúng chỗ kẹt (hỏi quá ngắn/lệch ý), còn việc mở tab ngoài làm đứt mạch tập trung; đọc tóm tắt dài không gắn đoạn bài dẫn tới học thụ động.
   - *Vì sao chưa bỏ:* Đây là cách duy nhất có sẵn ngay lúc tự học tối muộn khi không có giảng viên/TA trực tiếp bên cạnh.
 - Pain (KHÔNG chữ AI): Học viên L3 tự học bài pre-class buổi tối khi gặp đoạn kiến thức kỹ thuật khó thường dừng lâu, tua lại nhiều lần hoặc làm sai câu kiểm tra rồi phải chuyển tab tự tra cứu bên ngoài, làm đứt mạch tập trung và dẫn tới học thụ động hoặc bỏ dở bài trước giờ lên lớp.
-- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): *(Đang hoàn thiện CP2–CP3)* Khám phá bước đầu trên `data/preclass/` cho thấy 424/2.478 câu làm sai ở lần thử đầu (17,1%; cao tới 36,0% ở Day 06 và 41,4% ở Day 13) và 909/1.223 lượt chat đã chấm (74,3%) có `rubric_y_moi = 0`. Nhóm sẽ hoàn thiện script đào `events.csv` + phỏng vấn ≥4 học viên ngoài nhóm chiều T6 27/11.
+- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md` & `evidence/data-mining.md`):
+  - Từ `data/preclass/` (436 HV hoạt động trong 21 ngày, script `evidence/count.py`): **174/436 HV (39,9%)** có dấu hiệu kẹt rõ (tua ngược ≥2 lần, dừng ≥3 lần/quãng, hoặc làm sai lần đầu), tần suất trung vị **8 lần/21 ngày (~11,4 lần/tháng)**; **2.224/3.900 cặp mở video (57,0%)** không xem hết; tỉ lệ sai lần đầu lên tới **36,0% ở Day 06** và **41,4% ở Day 13**; **887/1.260 phản hồi AI (70,4%)** không có mốc trích dẫn; còn AI bạn học tự xen vào đại trà **13.975 lần** chỉ được phản hồi lại **91 lần (0,65%)**.
+  - Phỏng vấn ngoài nhóm (`P1.md` đã xong, đang gom `P2`–`P4`): `P1` (HV L3 học tối `20h–24h`) xác nhận kẹt nặng bài **Day 06**, gặp **1–2 lần/tháng**, mất **15–30 phút/lần** (lần mở tab ChatGPT bị cuốn đi >30 phút → quên mạch và làm sai quiz), và phản đối pop-up che màn hình khi đang tập trung đọc code.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+| **H1 (Chọn): Adaptive Pre-class Scaffolding** — gỡ kẹt chủ động có lọc tín hiệu & kèm mã đoạn (thẻ bên lề, không che màn hình) | **~280 HV L3** *(39,9% × ~700 HV L3 có dấu hiệu kẹt rõ, nguồn: `data/preclass/`)* | **~2 lần kẹt nặng / tháng** *(nguồn `P1`: 1–2 lần/tháng; riêng tín hiệu vi mô tua/dừng trên log đạt trung vị 11,4 lần/tháng)* | **~20 phút** tra cứu/đứt mạch *(nguồn `P1`: 15–30 phút/lần kẹt nặng — sẽ lấy trung vị khi đủ `P1–P4`)* | **~11.200 phút/tháng (~187 giờ/tháng)** trên toàn khối L3 *(~40 phút/HV/tháng)* | **Có** — workflow Python gọn, kiểm chứng được bằng code + 25 câu thử | **CHỌN** |
+| **H2 (Loại): Adaptive Cognitive-Load Reader dùng Webcam (MediaPipe) + Chrome Extension** *(ý tưởng nháp ban đầu)* | ~280 HV L3 *(tự ước tính tương đương H1)* | ~2 lần kẹt nặng / tháng *(tự ước tính)* | ~20 phút/lần *(tự ước tính)* | ~187 giờ/tháng nhưng tỉ lệ báo nhầm cao do ánh sáng/kính + rào cản quyền riêng tư bật webcam | **Không** — dính lỗi CSP Extension/WASM, lệch khung `run.py eval` Python | **LOẠI** |
+| **H3 (Loại): Báo cáo điểm kẹt cả lớp cho Giảng viên / TA trước buổi học** | ~10–15 giảng viên / TA *(tự ước tính quy mô khoá)* | ~8 buổi / tháng *(2 buổi/tuần, lịch khoá)* | ~20 phút rà soát log câu sai *(tự ước tính)* | ~27–40 giờ/tháng tổng, không kịp gặp đủ ≥3 giảng viên để phỏng vấn trong 10 giờ | **Khó đủ bằng chứng** vì khó hẹn ≥3 giảng viên trong chiều T6 | **LOẠI** |
 
-- **Impact / tháng** của hướng chọn = __ người × __ lần × __ phút = __ — nguồn từng thừa số: __ (không có nguồn thì ghi rõ *(tự ước tính)*)
-- Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
-- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8):
+- **Impact / tháng** của hướng chọn = **280 người** × **2 lần kẹt nặng** × **20 phút** = **11.200 phút (~187 giờ/tháng, tương đương ~40 phút/người/tháng)** — nguồn từng thừa số:
+  - *280 người:* tỉ lệ `174 / 436 = 39,9%` HV hoạt động có dấu hiệu kẹt rõ (`evidence/count.py`) × quy mô ~700 HV lớp L3 (nguồn: `02-guide.md` §4.2 — *"lớp L3 hơn 700 học viên, cả khoá hơn 1.000"*).
+  - *2 lần kẹt nặng/tháng & 20 phút/lần:* lấy mốc giữa bảo thủ từ phỏng vấn `P1` (`1–2 lần/tháng`, mỗi lần mất `15–30 phút`, riêng lần bị cuốn sang tab ngoài >30 phút) — sẽ cập nhật trung vị chính thức sau khi đủ `P1`–`P4` trước CP3. *(Lưu ý: tổng số lượt kích hoạt kiểm tra tín hiệu vi mô trên hệ thống vẫn theo log `evidence/count.py` ≈ 11,4 lần/tháng để ước lượng chi phí API ở §8 không bị đánh giá thấp.)*
+- **Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):**
+  - *H2 (Webcam MediaPipe + Chrome Extension):* Bị loại vì 3 lý do: (1) học viên không muốn bật webcam liên tục khi học tối; (2) eye-tracking bằng webcam thường nhiễu cao khi demo; (3) không kịp hoàn thành trong 10 giờ và khó tích hợp trực tiếp vào harness `run.py eval` / `simulate` của BTC. Nhóm giữ lại phần lõi giá trị nhất (phát hiện tải nhận thức + gỡ kẹt bằng ẩn dụ/sơ đồ tránh Cognitive Offloading) và chuyển sang dùng **tín hiệu hành vi có sẵn của pre-class**.
+  - *H3 (Báo cáo cho Giảng viên/TA):* Tổng impact giờ/tháng thấp hơn H1 (~40h vs ~257h) và khó phỏng vấn đạt ngưỡng ≥3 giảng viên thật trong 10 giờ hackathon.
+- **Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8, nguồn `evidence/count.py` quy đổi từ 21 ngày → 30 ngày):**
+  - *Dùng ít (1–2 ngày/21 ngày — 49,5% HV):* ~2–3 phiên/tháng (~3–5 lượt kiểm tra tín hiệu/tháng).
+  - *Dùng vừa (3–6 ngày/21 ngày — 37,8% HV):* ~6–8 phiên/tháng (~11–15 lượt/tháng).
+  - *Dùng nhiều (≥7 ngày/21 ngày — 12,6% HV):* ~12–16 phiên/tháng (~25–35 lượt/tháng).
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
