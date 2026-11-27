@@ -81,8 +81,9 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm | **Thật** (bắt buộc từ CP3) | Model: ____ |
-|  |  |  |
+| Lời gọi AI ở quyết định trung tâm | **Thật** (bắt buộc từ CP3) | Model: `gemini-3.5-flash-lite` (Google Gemini API, đo token thật từ `usageMetadata`) |
+| Kho bài học tra cứu (`data/lessons.json`) | **Giả lập rút gọn (`synthetic`)** | 12 đoạn bài học AI20K viết lại/đánh mã đoạn (`D06-S01..D13-S03`), xem `data/DATA_CARD.md` |
+| Tín hiệu hành vi học viên (`input`) | **Giả lập qua chuỗi text** | Truyền tín hiệu dừng/tua/rời tab/sai quiz qua text đầu vào cho harness `run.py`, chưa gắn trực tiếp vào DOM của `preclass-online.com` |
 
 ## Dùng AI vào việc gì
 
