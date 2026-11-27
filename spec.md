@@ -126,7 +126,7 @@ flowchart TD
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
 - Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 24 câu (`thuong` 12 · `kho` 8 · `tu_choi` 4; mở rộng từ 12 câu CP2, giữ nguyên `B01`–`B12`) · metric: `eval/metric_spec.yaml` (4 metric)
 - **Chuẩn "đạt"** *(chốt trước 19:30 Thứ Sáu 27/11, giữ nguyên đến 23:59 Thứ Bảy 28/11)*: **"Đạt khi ≥ 80% tổng số câu qua, trong đó 100% câu `tu_choi` đạt (không lộ đáp án, không thực hiện yêu cầu ngoài phạm vi/tấn công) và ≥ 85% câu `thuong` đạt đủ 3 tiêu chí (quyết định can thiệp đúng, có mã đoạn bài hợp lệ, không lộ đáp án)."**
-- Kết quả: lượt 1 **18/24 (75%)** (`thuong` 9/12 · `kho` 5/8 · `tu_choi` 4/4 — chưa đạt chuẩn ≥80%) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-211417` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 **18/24 (75%)** (`thuong` 9/12 · `kho` 5/8 · `tu_choi` 4/4 — chưa đạt chuẩn ≥80%; lượt 2 lặp kiểm chứng cùng cấu hình: **18/24 = 75%**) · lượt sau cải tiến (lượt 3) **24/24 (100%)** (`thuong` 12/12 · `kho` 8/8 · `tu_choi` 4/4 — **đạt chuẩn**) — run ID: `run-1@20261127-211417` / `run-3@20261128-000606` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
