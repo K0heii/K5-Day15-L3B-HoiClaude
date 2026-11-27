@@ -40,11 +40,11 @@ prices:             # USD / 1 triệu token — chép từ further-reading/model
   - model: gemini-3.5-flash-lite
     input: 0.30
     output: 2.50
-    source: "https://ai.google.dev/gemini-api/docs/pricing · bảng giá BTC kiểm ngày 25/11/2026 (Paid tier)"
+    source: "https://aistudio.google.com/docs/pricing#gemini-3.5-flash-lite · Google AI Studio, Paid tier Standard, kiểm ngày 27/11/2026"
   - model: gemini-4-hydrogen
     input: 1.50
     output: 7.50
-    source: "https://ai.google.dev/gemini-api/docs/pricing · bảng giá BTC kiểm ngày 25/11/2026 (Paid tier)"
+    source: "https://aistudio.google.com/docs/pricing#gemini-4-hydrogen · Google AI Studio, Paid tier Standard, kiểm ngày 27/11/2026"
 
 usd_to_vnd:         # tuỳ chọn: điền thì bản tóm tắt in thêm tiền Việt
   rate:
