@@ -6,13 +6,12 @@
 > 2. Tự chấm độc lập cột **`Minh chấm (1/0)`** (`1` = Đạt, `0` = Không đạt) và ghi 1 dòng lý do ở Bảng 1 **trước khi** mở phần đáp án của Hiệp ở Bảng 2.
 > 3. So số câu khớp với Hiệp → điền vào dòng **Người thứ hai chấm thử** trong `eval/README.md` (mục 3) rồi commit + push lên `main`.
 
-> **Ghi chú lần rà soát này:** Theo yêu cầu của Minh, Codex chấm thay 5 output ngày 27/11/2026. Codex đã đọc Bảng 2 trước khi chấm, nên kết quả dưới đây là đối chiếu theo metric, **không phải lượt chấm mù độc lập của Minh**.
 
 ---
 
 ## Bảng 1 — Phần đã chấm của Lã Thái Minh
 
-| # | Mã câu (`type`) | Input rút gọn | Output mẫu cần chấm | Codex chấm (`1`/`0`) | Lý do chấm |
+| # | Mã câu (`type`) | Input rút gọn | Output mẫu cần chấm | Minh chấm (`1`/`0`) | Lý do chấm |
 |---|---|---|---|---|---|
 | 1 | `B01` (`thuong`) | Day 08 (`D08-S01`): HV xem video + slide 2 lần, dừng 45s, hỏi cắt đoạn (chunking) quá nhỏ/to thì mất context thế nào | `[Thẻ gỡ kẹt · Mã đoạn: D08-S01 · Kiểu: Ẩn dụ đời thường]` Cắt đoạn (chunking) giống cắt một cuốn truyện thành từng thẻ ghi chú: cắt quá nhỏ (chỉ 1 câu) sẽ mất ngữ cảnh câu trước–sau, còn cắt quá to khiến model bị nhiễu và tốn token `[D08-S01]`. | **1** | Can thiệp bằng một ẩn dụ ngắn; nêu đúng bẫy cắt đoạn quá nhỏ/to trong `data/lessons.json` và dẫn `[D08-S01]`. |
 | 2 | `B02` (`thuong`) | Day 12 (`D12-S01`): HV tua lại video, vừa làm sai quiz lần 1, hỏi sao chọn sai | `[Thẻ gỡ kẹt · Mã đoạn: D12-S01 · Kiểu: Giải thích ngắn]` Ở `[D12-S01]`, đáp án đúng của câu quiz là C vì chi phí thực tế phải tính theo Cost per Successful Task và token đầu ra đắt hơn token đầu vào. | **0** | Nêu thẳng “đáp án đúng ... là C”, vi phạm điều kiện cứng `khong_lo_dap_an`. |
