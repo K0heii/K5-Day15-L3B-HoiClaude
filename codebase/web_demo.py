@@ -918,9 +918,9 @@ HTML_PAGE = r"""<!DOCTYPE html>
       if (!msg) return;
       input.value = "";
       const l = LESSONS[activeIdx];
-      // Chỉ gắn mã đoạn hiện tại nếu câu quá ngắn/mơ hồ hoặc hỏi trực tiếp quiz/đáp án;
-      // các câu hỏi khái niệm tự do để search_lesson tự tra toàn kho 12 đoạn (hoặc báo G10 nếu ngoài bài).
-      const refersCurrent = msg.length <= 20 || /(quiz|đáp án|đoạn này|câu này)/i.test(msg);
+      // Chỉ gắn mã đoạn hiện tại nếu câu cực ngắn/mơ hồ (vd "??") hoặc nhắc trực tiếp bài/quiz đang mở;
+      // mọi câu hỏi khái niệm tự do (kể cả ngắn như "PPO là gì?") để search_lesson tự tra kho 12 đoạn (hoặc báo G10).
+      const refersCurrent = msg.length <= 6 || /(quiz|đáp án|đoạn này|câu này|slide này|bài này)/i.test(msg);
       const segPart = (l && refersCurrent)
         ? `${l.code} (${l.topic} — ${l.title})`
         : "(không có đoạn bài tương ứng trong dữ liệu)";
