@@ -40,6 +40,6 @@ Khung chỉ dùng thư viện chuẩn của Python. Thêm thư viện thì ghi v
 
 ## Quy ước của nhóm
 
-- Ngôn ngữ trả lời người dùng: __
-- Phong cách code / đặt tên: __
-- Ai duyệt thay đổi do agent tạo trước khi commit: __
+- Ngôn ngữ trả lời người dùng: Tiếng Việt (ngắn gọn, rõ nguồn số liệu)
+- Phong cách code / đặt tên: Python 3 chuẩn PEP 8, chỉ dùng thư viện chuẩn cho khung `codebase/` và `evidence/count.py`, tên file reflection không dấu viết thường
+- Ai duyệt thay đổi do agent tạo trước khi commit: Đội trưởng Nguyễn Như Duy An (hoặc thành viên phụ trách mảng file đó theo `docs/team-plan.md`) trực tiếp kiểm tra và duyệt trước khi commit/push

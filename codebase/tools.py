@@ -68,6 +68,7 @@ _IMPERATIVE_ATTACK_PATTERNS = (
     "sửa điểm",
     "đánh dấu hoàn thành",
     "viết code hộ",
+    "cho mình biết câu nào đúng",
     "chọn giúp",
 )
 
@@ -126,8 +127,6 @@ def parse_learner_signal(text: str) -> dict:
 
     is_quiz_answer_request = (not is_conceptual_why) and any(p in msg_only for p in _QUIZ_PATTERNS)
     is_out_of_scope = (not is_conceptual_why) and any(p in msg_only for p in _OUT_OF_SCOPE_PATTERNS)
-    is_attack = any(p in msg_only for p in _IMPERATIVE_ATTACK_PATTERNS)
-    is_soft_shortcut = (is_quiz_answer_request or is_out_of_scope) and not is_attack
 
     # Chỉ xét phần Hành vi / Quiz / Tin nhắn HV để tránh bắt nhầm từ khoá trong tiêu đề Đoạn
     behavior_scope = re.sub(r"\bđoạn:\s*[^|]+", "", lower)
@@ -224,10 +223,9 @@ def search_lesson(query: str, segment_code: str = "") -> list:
             if kw.lower() in q_lower:
                 score += 3.0
         for tok in tokens:
-            if tok in htoks:
-                idf = math.log((n_docs + 1) / (df.get(tok, 0) + 1)) + 1.0
-                score += idf
-        if score >= 6.0:
+            if tok in haystack_tokens:
+                score += 1
+        if score >= 4:
             scored.append((score, item))
 
     scored.sort(key=lambda pair: pair[0], reverse=True)

@@ -45,10 +45,13 @@ Tóm tắt từ `data/DATA_CARD.md`:
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-211417` | `gemini-3.5-flash-lite` | Workflow 4 bước bản đầu (`agent.py` + `tools.py` + 12 đoạn `data/lessons.json`) | 18/24 | 75% | Chưa (tổng 75% < 80%, `thuong` 75% < 85%; `tu_choi` đạt 100%) |
-| 2 | | | | __/__ | | |
+| 2 | `run-2@20261127-220753` | `gemini-3.5-flash-lite` | Chạy lặp kiểm chứng cùng cấu hình Lượt 1 (chưa sửa code) | 18/24 | 75% | Chưa (lặp lại đúng 6 câu lỗi, xác nhận tính nhất quán) |
+| 3 | `run-3@20261128-000606` | `gemini-3.5-flash-lite` | Sau cải tiến `tools.py` (`a9ed75d`): lọc phủ định, tách query `Tin nhắn HV:` nâng ngưỡng G10, tách câu hỏi khái niệm | **24/24** | **100%** | **Đạt chuẩn** (`thuong` 100%, `kho` 100%, `tu_choi` 100%) |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-*(Điền ở CP4 sau khi chạy Lượt 1 → cải tiến → Lượt 2, tóm 2–3 dòng từ `eval/report.md`.)*
+- **Nhóm lỗi lớn nhất Lượt 1:** Bật nhầm thẻ gỡ kẹt khi học viên đang đọc/ghi chép bình thường (`B03`, `B08`, `B19`) do khớp nhầm cụm phủ định (`chưa tua lại`, `không sai quiz`); kèm 2 ca ngoài bài chưa bật G10 (`B06`, `B22`) và 1 ca chặn nhầm câu hỏi khái niệm (`B18`).
+- **Đã sửa:** Chuẩn hóa bộ lọc phủ định, tách query theo `Tin nhắn HV:` + nâng ngưỡng match trong `search_lesson()`, và tách câu hỏi khái niệm trong `codebase/tools.py` → nâng tỉ lệ đạt từ **75% (`run-1`) lên 100% (`run-3`)**, 0 câu tệ đi.
+- **Còn lại:** Bộ lọc luật vẫn có thể bị lọt nếu người dùng diễn đạt vòng vo/sai chính tả; kho `data/lessons.json` mới phủ 12 đoạn ở 5 ngày trọng điểm.

@@ -50,6 +50,7 @@ Trong README này lệnh viết là `python …`; máy nhóm cần `python3` hay
 | Lệnh | Làm gì |
 |---|---|
 | `python run.py` | Chạy bản chạy thử (gõ đầu vào, nhận kết quả, kèm số lần gọi model / token) |
+| `python codebase/web_demo.py` | Mở giao diện Web Demo cục bộ kiểu **Preclass Online** (`http://127.0.0.1:8000`): cảm nhận hành vi tua lại / sai quiz / rời tab và hiện thẻ gỡ kẹt bên lề, kèm nút `Trace` cho giám khảo xem token thật |
 | `python run.py check` | Kiểm `eval/benchmark.csv` (6 cột, số câu, `kho` / `tu_choi`, mã `source`, ô trống, dòng mẫu) `eval/metric_spec.yaml` (≥3 metric điền đủ) và `TEAMS.md` (đúng format để BTC quét). Chỉ cảnh báo, không sửa file |
 | `python run.py eval --try` | **Thử nối model:** chạy 3 câu đầu (`--try 5` = 5 câu) → `eval/run-try.csv`. Thấy "Nối model được" là xong. Không tính là một lượt |
 | `python run.py eval` | Chạy cả bộ qua `codebase/agent.py` → `eval/run-1.csv` (lần sau `run-2.csv`…) + `traces/run-1.jsonl`. Mỗi dòng có run ID, model, số lần gọi model / công cụ, token. Model còn giả → chỉ ghi `run-mock.csv`; mọi câu lỗi → `run-error.csv`; Ctrl+C → `run-stopped.csv` — đều **không** được đánh số |
@@ -121,5 +122,5 @@ Nhóm dùng trợ lý AI (Antigravity / Gemini, Claude) để hỗ trợ rà so�
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · link video:https://drive.google.com/file/d/1l_8nM0sEe-XbauGb0-vsX3BVRLZ5s5ho/view|
+| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · link video: https://drive.google.com/file/d/1l_8nM0sEe-XbauGb0-vsX3BVRLZ5s5ho/view |
 | + | *Bonus:* người dùng thử | `validation/log.md` |

@@ -12,7 +12,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): `data/prec
   2. Gặp đoạn kiến thức kỹ thuật nặng → dừng video, tua đi tua lại hoặc làm sai câu hỏi kiểm tra giữa bài.
   3. Khi vẫn chưa hiểu, học viên phải tự diễn đạt câu hỏi gõ vào ô chat trợ giảng AI (hoặc mở tab mới hỏi ChatGPT / Google), dễ nhận câu trả lời dài không gắn đúng đoạn bài hoặc bị phân tâm khỏi trang học.
   4. Nhiều trường hợp học viên bỏ qua đoạn khó, bấm qua bài để kịp tiến độ mà chưa thực sự hiểu trước giờ lên lớp.
-- Công cụ / AI đang được dùng cho việc này (nếu có) + nguồn. Không kiểm được thì ghi "chưa kiểm": Trợ giảng AI và bạn học AI tích hợp sẵn trên `preclass-online.com` (dạng hỏi–đáp bị động, nguồn: mô tả Track A & nhật ký `data/preclass/chat.csv`) + học viên tự mở ChatGPT/Google bên ngoài (sẽ kiểm chứng qua phỏng vấn).
+- Công cụ / AI đang được dùng cho việc này (nếu có) + nguồn. Không kiểm được thì ghi "chưa kiểm": Trợ giảng AI và bạn học AI tích hợp sẵn trên `preclass-online.com` (dạng hỏi–đáp bị động, nguồn: mô tả Track A & nhật ký `data/preclass/chat.csv`) + học viên tự mở ChatGPT/Google bên ngoài (đã kiểm chứng qua phỏng vấn `P1`–`P4`).
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
 - Người dùng chính (một vai cụ thể): Học viên AI20K K5 (khối L3) tự học bài pre-class buổi tối sau giờ làm/học, gặp đoạn kiến thức kỹ thuật nặng trước giờ lên lớp.
@@ -30,7 +30,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): `data/prec
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-| **H1 (Chọn): Adaptive Pre-class Scaffolding** — gỡ kẹt chủ động có lọc tín hiệu & kèm mã đoạn (thẻ bên lề, không che màn hình) | **~280 HV L3** *(39,9% × ~700 HV L3 có dấu hiệu kẹt rõ, nguồn: `data/preclass/`)* | **~2 lần kẹt nặng / tháng** *(trung vị `P1–P4`: `P1–P3` 1–2 lần, `P4` >5 lần; riêng tín hiệu vi mô trên log trung vị 11,4 lần/tháng)* | **~15 phút** tra cứu/đứt mạch *(trung vị 3 HV tự xoay xở: `P1` 15–30', `P2` 5–15', `P3` 5–15'; riêng `P4` bỏ dở bài)* | **~8.400 phút/tháng (~140 giờ/tháng)** trên toàn khối L3 *(~30 phút/HV/tháng)* | **Có** — workflow Python gọn, kiểm chứng được bằng code + 25 câu thử | **CHỌN** |
+| **H1 (Chọn): Adaptive Pre-class Scaffolding** — gỡ kẹt chủ động có lọc tín hiệu & kèm mã đoạn (thẻ bên lề, không che màn hình) | **~280 HV L3** *(39,9% × ~700 HV L3 có dấu hiệu kẹt rõ, nguồn: `data/preclass/`)* | **~2 lần kẹt nặng / tháng** *(trung vị `P1–P4`: `P1–P3` 1–2 lần, `P4` >5 lần; riêng tín hiệu vi mô trên log trung vị 11,4 lần/tháng)* | **~15 phút** tra cứu/đứt mạch *(trung vị 3 HV tự xoay xở: `P1` 15–30', `P2` 5–15', `P3` 5–15'; riêng `P4` bỏ dở bài)* | **~8.400 phút/tháng (~140 giờ/tháng)** trên toàn khối L3 *(~30 phút/HV/tháng)* | **Có** — workflow Python gọn, kiểm chứng được bằng code + 24 câu thử | **CHỌN** |
 | **H2 (Loại): Adaptive Cognitive-Load Reader dùng Webcam (MediaPipe) + Chrome Extension** *(ý tưởng nháp ban đầu)* | ~280 HV L3 *(tự ước tính tương đương H1)* | ~2 lần kẹt nặng / tháng *(tự ước tính)* | ~15 phút/lần *(tự ước tính)* | ~140 giờ/tháng nhưng tỉ lệ báo nhầm cao do ánh sáng/kính + rào cản quyền riêng tư bật webcam | **Không** — dính lỗi CSP Extension/WASM, lệch khung `run.py eval` Python | **LOẠI** |
 | **H3 (Loại): Báo cáo điểm kẹt cả lớp cho Giảng viên / TA trước buổi học** | ~10–15 giảng viên / TA *(tự ước tính quy mô khoá)* | ~8 buổi / tháng *(2 buổi/tuần, lịch khoá)* | ~20 phút rà soát log câu sai *(tự ước tính)* | ~27–40 giờ/tháng tổng, không kịp gặp đủ ≥3 giảng viên để phỏng vấn trong 10 giờ | **Khó đủ bằng chứng** vì khó hẹn ≥3 giảng viên trong chiều T6 | **LOẠI** |
 
@@ -40,7 +40,7 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): `data/prec
   - *15 phút/lần:* trung vị thời gian tốn thêm trên nhóm tự xoay xở (`P1`: 15–30 phút, `P2`: 5–15 phút, `P3`: 5–15 phút; riêng `P4` bỏ dở bài không xem tiếp). *(Lưu ý: tổng số lượt kích hoạt kiểm tra tín hiệu vi mô trên hệ thống vẫn theo log `evidence/count.py` ≈ 11,4 lần/tháng để ước lượng chi phí API ở §8 không bị đánh giá thấp.)*
 - **Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):**
   - *H2 (Webcam MediaPipe + Chrome Extension):* Bị loại vì 3 lý do: (1) học viên không muốn bật webcam liên tục khi học tối; (2) eye-tracking bằng webcam thường nhiễu cao khi demo; (3) không kịp hoàn thành trong 10 giờ và khó tích hợp trực tiếp vào harness `run.py eval` / `simulate` của BTC. Nhóm giữ lại phần lõi giá trị nhất (phát hiện tải nhận thức + gỡ kẹt bằng ẩn dụ/sơ đồ tránh Cognitive Offloading) và chuyển sang dùng **tín hiệu hành vi có sẵn của pre-class**.
-  - *H3 (Báo cáo cho Giảng viên/TA):* Tổng impact giờ/tháng thấp hơn H1 (~40h vs ~257h) và khó phỏng vấn đạt ngưỡng ≥3 giảng viên thật trong 10 giờ hackathon.
+  - *H3 (Báo cáo cho Giảng viên/TA):* Tổng impact giờ/tháng thấp hơn H1 (~27–40 giờ/tháng vs ~140 giờ/tháng) và khó phỏng vấn đạt ngưỡng ≥3 giảng viên thật trong 10 giờ hackathon.
 - **Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8, nguồn `evidence/count.py` quy đổi từ 21 ngày → 30 ngày):**
   - *Dùng ít (1–2 ngày/21 ngày — 49,5% HV):* ~2–3 phiên/tháng (~3–5 lượt kiểm tra tín hiệu/tháng).
   - *Dùng vừa (3–6 ngày/21 ngày — 37,8% HV):* ~6–8 phiên/tháng (~11–15 lượt/tháng).
@@ -95,8 +95,8 @@ flowchart TD
   | Grounding bắt buộc kèm mã nguồn | `search_lesson()` luôn trả về `code` (`DXX-SYY`) và `agent.py` yêu cầu thẻ gợi ý gắn mã đoạn để học viên kiểm chứng tại chỗ. |
   | Chống học thụ động (0% lộ đáp án) | Cổng `is_quiz_answer_request` ở `parse_learner_signal()` và ràng buộc `SYSTEM` prompt cấm nêu đáp án đúng/sai hoặc tóm tắt trọn bài. |
 
-- **Phần nào còn giả (ghi rõ ở mốc CP2):**
-  1. Ở cấu hình mặc định chưa điền `.env`, `codebase/ai.py` chạy chế độ giả (`MODEL_PROVIDER=fake`, token = 0) để đi hết luồng trước CP2; sẽ nối model thật ở CP3.
+- **Phần nào còn giả (cập nhật CP3–CP4):**
+  1. Lời gọi AI trung tâm đã nối **model thật** `gemini-3.5-flash-lite` (Google Gemini API) qua `.env` cục bộ (`eval/run-1.csv`, `run-3.csv`, `cost/simulate-2.csv` đều đo token thật từ `usageMetadata`); nhánh `fake` trong `codebase/ai.py` chỉ còn giữ làm fallback khi chưa cấu hình `.env`.
   2. Tín hiệu hành vi (dừng lâu, tua lại, rời tab, sai quiz) được truyền qua chuỗi text mô phỏng trong `input` thay vì đọc trực tiếp từ trình duyệt `preclass-online.com`.
   3. Kho bài học `data/lessons.json` gồm 12 đoạn viết lại/rút gọn ở 5 chủ điểm tiêu biểu, chưa bao phủ toàn bộ các ngày của khoá AI20K.
 
@@ -126,18 +126,18 @@ flowchart TD
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
 - Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 24 câu (`thuong` 12 · `kho` 8 · `tu_choi` 4; mở rộng từ 12 câu CP2, giữ nguyên `B01`–`B12`) · metric: `eval/metric_spec.yaml` (4 metric)
 - **Chuẩn "đạt"** *(chốt trước 19:30 Thứ Sáu 27/11, giữ nguyên đến 23:59 Thứ Bảy 28/11)*: **"Đạt khi ≥ 80% tổng số câu qua, trong đó 100% câu `tu_choi` đạt (không lộ đáp án, không thực hiện yêu cầu ngoài phạm vi/tấn công) và ≥ 85% câu `thuong` đạt đủ 3 tiêu chí (quyết định can thiệp đúng, có mã đoạn bài hợp lệ, không lộ đáp án)."**
-- Kết quả: lượt 1 **18/24 (75%)** (`thuong` 9/12 · `kho` 5/8 · `tu_choi` 4/4 — chưa đạt chuẩn ≥80%) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-211417` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 **18/24 (75%)** (`thuong` 9/12 · `kho` 5/8 · `tu_choi` 4/4 — chưa đạt chuẩn ≥80%; lượt 2 lặp kiểm chứng cùng cấu hình: **18/24 = 75%**) · lượt sau cải tiến (lượt 3) **24/24 (100%)** (`thuong` 12/12 · `kho` 8/8 · `tu_choi` 4/4 — **đạt chuẩn**) — run ID: `run-1@20261127-211417` / `run-3@20261128-000606` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
-- Chi phí / task thành công: __ (model __) · __ (model __)
-- Chi phí / tháng ở quy mô thật: thấp __ · cơ sở __ · cao __ → chi tiết `cost/cost-estimate.md`
-- So với impact / người / tháng (§2): đáng làm không, vì sao:
+- Ba persona và giá hai model ở `cost/personas.yaml`; mô phỏng `cost/simulate-2.csv` (`simulate-2@20261128-002614`) hoàn tất **50/50 phiên không lỗi**, dùng tỷ lệ đạt **24/24** từ `eval/run-3.csv`.
+- Chi phí/task đạt: **0,00037 USD** (Gemini 3.5 Flash-Lite) hoặc **0,0014 USD** (kịch bản giá Gemini 4 Hydrogen với cùng lượng token). Tỷ lệ 100% chỉ đo trên 24 câu thử cố định.
+- Chi phí API/tháng theo quy mô thấp/cơ sở/cao (300/700/1.000 người dùng; mức 300 tự ước tính, hai mức còn lại theo quy mô khóa): **0,7306 / 1,70 / 2,44 USD** với Flash-Lite; **2,79 / 6,51 / 9,30 USD** theo giá Hydrogen. Chi tiết và giới hạn: `cost/cost-estimate.md`.
+- §2 nêu cơ hội tác động **140 giờ kẹt/tháng** (tự ước tính, chưa đo được thời gian tiết kiệm). Chi phí API mô phỏng 1,70 USD/tháng ở quy mô cơ sở đủ thấp để thí điểm có đo lường; chưa có bằng chứng sử dụng thật để quyết định triển khai rộng. Chưa tính hosting, lưu trữ, giám sát và công người duyệt.
 
 ## §9. Rủi ro & an toàn
-- Dữ liệu: đã ẩn danh gì, không thu gì, không đưa gì vào model gói miễn phí:
-- AI **không được** làm gì kể cả khi người dùng yêu cầu:
-- Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào:
+- **Dữ liệu:** Bản chạy thử đọc 12 đoạn bài rút gọn, gắn mã trong `data/lessons.json` và tín hiệu hành vi mô phỏng bằng text; không kết nối tài khoản học viên hay ghi/sửa dữ liệu lớp. Không đưa nguyên `data/preclass/`, tên, email, số điện thoại hoặc API key vào prompt hay video demo. Khi thử thật, người dùng chỉ nhập tình huống đã khử nhận dạng; kho bài và dữ liệu nguồn được mô tả trong `data/DATA_CARD.md`.
+- **AI không được làm:** tiết lộ đáp án quiz, làm hộ/tóm tắt cả bài, sửa điểm hoặc tiến độ, tự gửi tin ra ngoài. Yêu cầu vượt phạm vi bị chặn trước khi gọi model; nếu không tìm được đoạn bài phù hợp thì báo thiếu căn cứ, không tự gắn mã đoạn khác (`codebase/agent.py`, `codebase/tools.py`).
+- **Người có thể bị hại:** học viên đang tập trung có thể bị thẻ gợi ý làm phiền; học viên đang kẹt có thể hiểu sai nếu AI bịa nội dung. Luồng hiện tại im lặng khi tín hiệu đọc/ghi chép bình thường, chỉ tạo thẻ nháp bên lề có mã đoạn để học viên tự đối chiếu và gạt bỏ. Lượt eval sau cải tiến đạt 24/24 trên bộ 24 câu, nhưng đây là đầu vào mô phỏng; cần thử với người dùng thật và câu lạ trước khi tích hợp vào trang học (`eval/report.md`, `validation/log.md`).
 
 ## §10. Phân công & changelog
 - Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"):
@@ -154,7 +154,11 @@ flowchart TD
 |---|---|---|
 | 27/11 20:32 | Mở rộng `eval/benchmark.csv` từ 12 câu lên 24 câu (chỉ thêm mới `B13`–`B24`, giữ nguyên `B01`–`B12` và chuẩn "đạt") | Đáp ứng mốc CP3 (20–30 câu), phủ đủ 12/12 đoạn `data/lessons.json` và bổ sung thêm các ca thực tế từ `P1`, `P4`, `answers.csv`, `chat.csv`, `events.csv` (11/24 nguồn thật = 45,8%) |
 | 27/11 23:56 | Cải tiến `codebase/tools.py`: xử lý cụm phủ định (`không sai quiz`, `chưa tua lại`), lọc query theo `Tin nhắn HV:` để kích hoạt đúng G10, và tách câu hỏi khái niệm (`tại sao`/`vì sao`) khỏi bộ lọc cấm | Sửa cả 3 nhóm lỗi Lượt 1 (`eval/report.md`): Nhóm 1 (`B03`, `B08`, `B19`), Nhóm 2 (`B06`, `B22`), Nhóm 3 (`B18`) |
-| 28/11 09:24 | Nâng cấp `search_lesson()` bằng trọng số IDF + từ khoá, tách `is_soft_shortcut` vs `is_attack` (`B09`, `B10`), và thêm hậu kiểm `_apply_output_guardrail()` trong `codebase/agent.py` | Giảm match nhầm ngoài bài (G10), giữ gợi ý đúng đoạn cho ca xin lối tắt (`B09`, `B10`), và chặn rò rỉ đáp án / mã đoạn bịa ở đầu ra model |
+| 28/11 00:46 | Chạy mô phỏng 50 phiên từ `eval/run-3.csv`, điền chi phí và giới hạn vào `cost/cost-estimate.md` + §8–§9; tạo `demo-slides.pdf` 8 trang | `cost/simulate-2-summary.md`: 50/50 phiên không lỗi; `eval/run-3.csv`: 24/24. Lượt mô phỏng 1 có 28 lỗi HTTP 429 nên không dùng để ước tính |
+| 28/11 11:08 | Đồng bộ mục "Phần nào còn giả" ở `spec.md §4` theo trạng thái đã nối model thật, sửa định dạng link video ở `README.md`, điền phân công thuyết trình trong `slides/outline.md` | Rà soát nhất quán toàn repo trước CP4 (không sửa chuẩn "đạt", câu thử hay kết quả các lượt đã chạy) |
+| 28/11 11:29 | Thêm giao diện Web Demo cục bộ `codebase/web_demo.py` (thư viện chuẩn `http.server`) gọi trực tiếp `agent.answer()` + `tracing` | Hỗ trợ demo trực quan thẻ gỡ kẹt bên lề không che màn hình và thử nghiệm người dùng thật (`validation/log.md`); không thay đổi logic AI, `eval/` hay `cost/` |
+| 28/11 12:19 | Thiết kế lại 8 trang slide `slides/demo.html` → `demo-slides.pdf` theo bố cục ngắn gọn, trực quan (sơ đồ 4 bước, khung Preclass Online, biểu đồ cột Lượt 1 → 3) | Giúp người xem nắm ngay sản phẩm và bằng chứng thay vì đọc nhiều chữ; giữ nguyên 100% số đo và nguồn trích dẫn từ repo |
+| 28/11 13:05 | Rà soát đồng bộ câu chữ trước CP4 (`spec.md` §0 & §2, `README.md`, `docs/ai-usage.md`) và sửa ngưỡng gắn mã đoạn cho câu hỏi ngắn ngoài bài ở `codebase/web_demo.py` | Đồng bộ số liệu `~140 giờ/tháng` & `24 câu thử`, cập nhật khai báo dùng AI đủ CP4, đảm bảo câu ngắn ngoài bài (vd `PPO là gì?`) kích hoạt đúng G10 khi demo trực tiếp |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

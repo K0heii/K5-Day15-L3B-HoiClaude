@@ -1,0 +1,144 @@
+﻿run_id,session,persona,turns,inputs,model,model_calls,tool_calls,tokens_in,tokens_out,latency_s,error,tokens_by_model
+simulate-1@20261128-002231,S001,hoc_vua,2,Bài: Day 08 | Đoạn: D08-S01 (RAG & Grounding — Chunking) | Hành vi: nghe video v ‖ Bài: Day 12 | Đoạn: D12-S01 | Hành vi: vừa làm sai quiz lúc 23h30 | Quiz: sai lầ,gemini-3.5-flash-lite,1,4,525,101,1.17,,"{""gemini-3.5-flash-lite"": {""in"": 525, ""out"": 101}}"
+simulate-1@20261128-002231,S002,hoc_it,1,Bài: Day 12 | Đoạn: D12-S02 (Cost & Token Economics — Model Routing) | Hành vi: ,gemini-3.5-flash-lite,1,3,498,74,1.258,,"{""gemini-3.5-flash-lite"": {""in"": 498, ""out"": 74}}"
+simulate-1@20261128-002231,S003,hoc_vua,2,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV:  ‖ Bài: Day 06 | Đoạn: D06-S01 (Evaluation & Metric Spec) | Hành vi: đang đọc bình ,gemini-3.5-flash-lite,1,4,472,76,1.233,,"{""gemini-3.5-flash-lite"": {""in"": 472, ""out"": 76}}"
+simulate-1@20261128-002231,S004,hoc_vua,2,Bài: Day 12 | Đoạn: D12-S01 (Cost & Token Economics) | Hành vi: tua đi tua lại v ‖ Bài: Day 08 | Đoạn: D08-S01 (RAG & Grounding — Chunking) | Hành vi: nghe video v,gemini-3.5-flash-lite,2,6,1039,189,1.989,,"{""gemini-3.5-flash-lite"": {""in"": 1039, ""out"": 189}}"
+simulate-1@20261128-002231,S005,hoc_it,1,Bài: Day 13 | Đoạn: D13-S03 | Hành vi: dừng 55s đang ghi chép và tập trung đọc đ,,0,1,0,0,0.0,,{}
+simulate-1@20261128-002231,S006,hoc_vua,2,Bài: Day 08 | Đoạn: D08-S01 (RAG & Grounding — Chunking) | Hành vi: nghe video v ‖ Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV: ,gemini-3.5-flash-lite,2,6,997,203,2.228,,"{""gemini-3.5-flash-lite"": {""in"": 997, ""out"": 203}}"
+simulate-1@20261128-002231,S007,hoc_it,1,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV: ,gemini-3.5-flash-lite,1,3,472,73,0.854,,"{""gemini-3.5-flash-lite"": {""in"": 472, ""out"": 73}}"
+simulate-1@20261128-002231,S008,hoc_it,1,"Bài: Day 13 | Đoạn: D13-S01 (Cognitive Load & Scaffolding) | Hành vi: dừng 50s, ",gemini-3.5-flash-lite,1,3,529,68,0.996,,"{""gemini-3.5-flash-lite"": {""in"": 529, ""out"": 68}}"
+simulate-1@20261128-002231,S009,hoc_vua,2,Bài: Day 08 | Đoạn: D08-S01 (RAG & Grounding — Chunking) | Hành vi: nghe video v ‖ Bài: Day 06 | Đoạn: (không có đoạn bài tương ứng trong dữ liệu) | Hành vi: dừng ,gemini-3.5-flash-lite,1,5,525,115,1.154,,"{""gemini-3.5-flash-lite"": {""in"": 525, ""out"": 115}}"
+simulate-1@20261128-002231,S010,hoc_vua,2,Bài: Day 06 | Đoạn: D06-S02 (Precision & Recall) | Hành vi: làm sai liên tiếp 2  ‖ Bài: Day 12 | Đoạn: D12-S01 | Hành vi: vừa làm sai quiz lúc 23h30 | Quiz: sai lầ,gemini-3.5-flash-lite,1,4,506,106,1.35,,"{""gemini-3.5-flash-lite"": {""in"": 506, ""out"": 106}}"
+simulate-1@20261128-002231,S011,hoc_it,1,Bài: Day 06 | Đoạn: D06-S02 (Precision & Recall) | Hành vi: làm sai liên tiếp 2 ,gemini-3.5-flash-lite,1,3,506,105,0.904,,"{""gemini-3.5-flash-lite"": {""in"": 506, ""out"": 105}}"
+simulate-1@20261128-002231,S012,hoc_it,1,"Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l",gemini-3.5-flash-lite,1,3,490,121,1.257,,"{""gemini-3.5-flash-lite"": {""in"": 490, ""out"": 121}}"
+simulate-1@20261128-002231,S013,hoc_it,1,"Bài: Day 06 | Đoạn: D06-S03 (Data Leakage) | Hành vi: dừng 45s, tua lại 2 lần | ",gemini-3.5-flash-lite,1,3,496,61,0.799,,"{""gemini-3.5-flash-lite"": {""in"": 496, ""out"": 61}}"
+simulate-1@20261128-002231,S014,hoc_vua,2,"Bài: Day 12 | Đoạn: D12-S01 (Cost & Token Economics) | Hành vi: tua đi tua lại v ‖ Bài: Day 13 | Đoạn: D13-S01 (Cognitive Load & Scaffolding) | Hành vi: dừng 50s, ",gemini-3.5-flash-lite,2,5,514,66,1.464,"T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede","{""gemini-3.5-flash-lite"": {""in"": 514, ""out"": 66}}"
+simulate-1@20261128-002231,S015,hoc_vua,2,"Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l ‖ Bài: Day 06 | Đoạn: D06-S01 (Evaluation & Metric Spec) | Hành vi: đang đọc bình ",,1,3,0,0,0.163,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S016,hoc_vua,2,"Bài: Day 08 | Đoạn: (không có đoạn bài tương ứng) | Hành vi: dừng 60s, tua lại 2 ‖ Bài: Day 06 | Đoạn: D06-S03 (Data Leakage) | Hành vi: dừng 45s, tua lại 2 lần | ",,1,4,0,0,0.148,"T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S017,hoc_vua,2,Bài: Day 06 | Đoạn: D06-S01 (Evaluation & Metric Spec) | Hành vi: đang đọc bình  ‖ Bài: Day 12 | Đoạn: D12-S01 (Cost & Token Economics) | Hành vi: tua đi tua lại v,gemini-3.5-flash-lite,1,4,514,48,0.73,,"{""gemini-3.5-flash-lite"": {""in"": 514, ""out"": 48}}"
+simulate-1@20261128-002231,S018,hoc_vua,2,"Bài: Day 06 | Đoạn: D06-S01 | Hành vi: dừng 40s, tua lại 2 lần | Quiz: chưa làm  ‖ Bài: Day 06 | Đoạn: D06-S01 (Evaluation & Metric Spec) | Hành vi: đang đọc bình ",,0,2,0,0,0.0,,{}
+simulate-1@20261128-002231,S019,hoc_vua,2,"Bài: Day 08 | Đoạn: D08-S02 (RAG & Grounding — Abstention) | Hành vi: dừng 60s,  ‖ Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l",gemini-3.5-flash-lite,2,5,510,82,1.208,"T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede","{""gemini-3.5-flash-lite"": {""in"": 510, ""out"": 82}}"
+simulate-1@20261128-002231,S020,hoc_it,1,"Bài: Day 06 | Đoạn: D06-S03 (Data Leakage) | Hành vi: dừng 45s, tua lại 2 lần | ",,1,2,0,0,0.17,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S021,hoc_it,1,"Bài: Day 06 | Đoạn: D06-S03 (Data Leakage) | Hành vi: dừng 45s, tua lại 2 lần | ",,1,2,0,0,0.148,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S022,hoc_it,1,Bài: Day 12 | Đoạn: D12-S01 | Hành vi: vừa làm sai quiz lúc 23h30 | Quiz: sai lầ,,0,1,0,0,0.0,,{}
+simulate-1@20261128-002231,S023,hoc_vua,2,"Bài: Day 06 | Đoạn: D06-S01 (Evaluation & Metric Spec) | Hành vi: đang đọc bình  ‖ Bài: Day 08 | Đoạn: (không có đoạn bài tương ứng) | Hành vi: dừng 60s, tua lại 2",,0,3,0,0,0.003,,{}
+simulate-1@20261128-002231,S024,hoc_vua,2,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV:  ‖ Bài: Day 13 | Đoạn: D13-S03 | Hành vi: dừng 55s đang ghi chép và tập trung đọc đ,,1,3,0,0,0.163,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S025,hoc_it,1,"Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l",,1,2,0,0,0.165,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S026,hoc_it,1,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV: ,,1,2,0,0,0.228,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S027,hoc_it,1,Bài: Day 06 | Đoạn: D06-S02 (Precision & Recall) | Hành vi: làm sai liên tiếp 2 ,gemini-3.5-flash-lite,1,3,506,87,0.896,,"{""gemini-3.5-flash-lite"": {""in"": 506, ""out"": 87}}"
+simulate-1@20261128-002231,S028,hoc_vua,2,Bài: Day 12 | Đoạn: D12-S01 (Cost & Token Economics) | Hành vi: tua đi tua lại v ‖ Bài: Day 13 | Đoạn: D13-S03 | Hành vi: dừng 55s đang ghi chép và tập trung đọc đ,,1,3,0,0,0.179,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S029,hoc_vua,2,"Bài: Day 06 | Đoạn: D06-S02 (Precision & Recall) | Hành vi: làm sai liên tiếp 2  ‖ Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l",,2,4,0,0,10.892,"T1 RemoteDisconnected: Remote end closed connection without response; T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S030,hoc_it,1,"Bài: Day 06 | Đoạn: D06-S02 | Hành vi: dừng 180s, chuyển sang tab khác đi việc r",,0,1,0,0,0.0,,{}
+simulate-1@20261128-002231,S031,hoc_nhieu,2,Bài: Day 06 | Đoạn: D06-S02 | Hành vi: vừa đóng bỏ qua câu quiz giữa video (skip ‖ Bài: Day 06 | Đoạn: D06-S02 (Precision & Recall) | Hành vi: làm sai liên tiếp 2 ,,2,4,0,0,0.681,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede; T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S032,hoc_it,1,"Bài: Day 13 | Đoạn: D13-S02 (Cognitive Offloading) | Hành vi: dừng 40s, tua lại ",,1,2,0,0,0.169,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S033,hoc_it,1,"Bài: Day 13 | Đoạn: D13-S01 (Cognitive Load & Scaffolding) | Hành vi: dừng 50s, ",,1,2,0,0,0.145,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S034,hoc_it,1,Bài: Day 12 | Đoạn: D12-S02 (Cost & Token Economics — Model Routing) | Hành vi: ,,1,2,0,0,0.144,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S035,hoc_it,1,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV: ,,1,2,0,0,0.159,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S036,hoc_vua,2,Bài: Day 06 | Đoạn: D06-S02 | Hành vi: vừa đóng bỏ qua câu quiz giữa video (skip ‖ Bài: Day 10 | Đoạn: D10-S02 (Human-in-the-loop) | Hành vi: vừa làm sai quiz lần ,,2,4,0,0,0.362,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede; T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S037,hoc_nhieu,2,"Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l ‖ Bài: Day 06 | Đoạn: D06-S03 (Data Leakage) | Hành vi: dừng 45s, tua lại 2 lần | ",gemini-3.5-flash-lite,2,5,496,93,1.17,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede","{""gemini-3.5-flash-lite"": {""in"": 496, ""out"": 93}}"
+simulate-1@20261128-002231,S038,hoc_it,1,Bài: Day 12 | Đoạn: D12-S02 (Cost & Token Economics — Model Routing) | Hành vi: ,,1,2,0,0,0.172,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S039,hoc_vua,2,Bài: Day 06 | Đoạn: D06-S01 (Evaluation & Metric Spec) | Hành vi: đang đọc bình  ‖ Bài: Day 12 | Đoạn: D12-S01 (Cost & Token Economics) | Hành vi: tua đi tua lại v,,1,3,0,0,0.469,"T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S040,hoc_vua,2,Bài: Day 12 | Đoạn: D12-S02 (Cost & Token Economics — Model Routing) | Hành vi:  ‖ Bài: Day 06 | Đoạn: (không có đoạn bài tương ứng trong dữ liệu) | Hành vi: dừng ,,1,4,0,0,0.165,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S041,hoc_vua,2,"Bài: Day 10 | Đoạn: D10-S02 (Human-in-the-loop) | Hành vi: vừa làm sai quiz lần  ‖ Bài: Day 08 | Đoạn: (không có đoạn bài tương ứng) | Hành vi: dừng 60s, tua lại 2",,1,4,0,0,0.158,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S042,hoc_it,1,"Bài: Day 10 | Đoạn: D10-S01 (Workflow vs Agent) | Hành vi: dừng 50s, tua lại 2 l",,1,2,0,0,0.165,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S043,hoc_vua,2,"Bài: Day 13 | Đoạn: D13-S01 (Cognitive Load & Scaffolding) | Hành vi: dừng 50s,  ‖ Bài: Day 13 | Đoạn: D13-S03 (Tín hiệu kẹt vs rời tab) | Hành vi: đang đọc bình t",,1,3,0,0,0.168,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S044,hoc_it,1,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV: ,,1,2,0,0,0.184,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S045,hoc_vua,2,"Bài: Day 08 | Đoạn: D08-S01 (RAG & Grounding — Chunking) | Hành vi: nghe video v ‖ Bài: Day 08 | Đoạn: D08-S02 (RAG & Grounding — Abstention) | Hành vi: dừng 60s, ",,2,4,0,0,0.301,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede; T2 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S046,hoc_vua,2,Bài: Day 08 | Đoạn: D08-S01 | Hành vi: dừng 35s | Quiz: chưa làm | Tin nhắn HV:  ‖ Bài: Day 12 | Đoạn: D12-S01 | Hành vi: vừa làm sai quiz lúc 23h30 | Quiz: sai lầ,,1,3,0,0,0.137,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede",{}
+simulate-1@20261128-002231,S047,hoc_vua,2,"Bài: Day 06 | Đoạn: D06-S02 (Precision & Recall) | Hành vi: làm sai liên tiếp 2  ‖ Bài: Day 08 | Đoạn: D08-S02 (RAG & Grounding — Abstention) | Hành vi: dừng 60s, ",gemini-3.5-flash-lite,2,5,510,116,1.194,"T1 RuntimeError: HTTP 429: {
+  ""error"": {
+    ""code"": 429,
+    ""message"": ""You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceede","{""gemini-3.5-flash-lite"": {""in"": 510, ""out"": 116}}"
+simulate-1@20261128-002231,S048,hoc_it,1,Bài: Day 06 | Đoạn: (không có đoạn bài tương ứng trong dữ liệu) | Hành vi: dừng ,,0,2,0,0,0.003,,{}
+simulate-1@20261128-002231,S049,hoc_it,1,Bài: Day 12 | Đoạn: D12-S01 | Hành vi: vừa làm sai quiz lúc 23h30 | Quiz: sai lầ,,0,1,0,0,0.0,,{}
+simulate-1@20261128-002231,S050,hoc_nhieu,2,Bài: Day 06 | Đoạn: (không có đoạn bài tương ứng trong dữ liệu) | Hành vi: dừng  ‖ Bài: Day 13 | Đoạn: D13-S03 (Tín hiệu kẹt vs rời tab) | Hành vi: đang đọc bình t,,0,3,0,0,0.002,,{}
