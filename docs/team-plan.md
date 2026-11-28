@@ -21,12 +21,12 @@
 ## 2. Việc cần làm NGAY: Chặng CP2 *(hạn 19:30 Thứ Sáu 27/11 · 4 điểm)*
 
 **Mục tiêu bắt buộc lúc 19:30:**
-- [ ] `canvas.md` cập nhật số bằng chứng đầu + dòng *"Đã đổi gì so với CP1"*.
-- [ ] Có bằng chứng đầu (4 file phỏng vấn + số đào từ `data/preclass/`).
-- [ ] `spec.md §4` có sơ đồ kiến trúc giải pháp.
-- [ ] `eval/benchmark.csv` có **≥10 câu thử**, `eval/metric_spec.yaml` có **≥3 metric**, `data/DATA_CARD.md` bản đầu.
-- [ ] **Chốt cứng chuẩn "đạt" ở `spec.md §7`** *(tuyệt đối không sửa sau 19:30!)*.
-- [ ] `python run.py` đi hết luồng ở chế độ AI giả.
+- [x] `canvas.md` cập nhật số bằng chứng đầu + dòng *"Đã đổi gì so với CP1"*.
+- [x] Có bằng chứng đầu (4 file phỏng vấn + số đào từ `data/preclass/`).
+- [x] `spec.md §4` có sơ đồ kiến trúc giải pháp.
+- [x] `eval/benchmark.csv` có **≥10 câu thử**, `eval/metric_spec.yaml` có **≥3 metric**, `data/DATA_CARD.md` bản đầu.
+- [x] **Chốt cứng chuẩn "đạt" ở `spec.md §7`** *(tuyệt đối không sửa sau 19:30!)*.
+- [x] `python run.py` đi hết luồng ở chế độ AI giả.
 
 ### Chia mốc thời gian (17:15 – 19:30)
 
@@ -56,13 +56,13 @@
 ## 3. Chặng CP3 *(19:30 Thứ Sáu → 10:00 Thứ Bảy 28/11 · 4 điểm)*
 
 **Mục tiêu bắt buộc lúc 10:00 Thứ Bảy:**
-- [ ] Bằng chứng đủ ngưỡng ≥1 nguồn + ≥5 trích dẫn (`evidence/summary.md`) + bảng Impact (`spec.md §2`).
-- [ ] `eval/benchmark.csv` mở rộng lên **20–30 câu** (≥5 `kho`, ≥2 `tu_choi` tấn công — chỉ thêm mới, không sửa đáp án câu cũ).
-- [ ] Bản chạy thử gọi **AI thật** (`codebase/ai.py` + `.env` cục bộ).
-- [ ] Đã chạy **Lượt 1** (`python run.py eval` → `eval/run-1.csv`) + chấm cột `pass` → chạy `python run.py score eval/run-1.csv`.
-- [ ] `spec.md §0–§7` đầy đủ.
-- [ ] **Video 30 giây** thao tác thật, AI trả lời thật (YouTube Unlisted / Drive Public, mở được tab ẩn danh).
-- [ ] Chạy thử `python run.py simulate --try` (10 phiên).
+- [x] Bằng chứng đủ ngưỡng ≥1 nguồn + ≥5 trích dẫn (`evidence/summary.md`) + bảng Impact (`spec.md §2`).
+- [x] `eval/benchmark.csv` mở rộng lên **20–30 câu** (≥5 `kho`, ≥2 `tu_choi` tấn công — chỉ thêm mới, không sửa đáp án câu cũ).
+- [x] Bản chạy thử gọi **AI thật** (`codebase/ai.py` + `.env` cục bộ).
+- [x] Đã chạy **Lượt 1** (`python run.py eval` → `eval/run-1.csv`) + chấm cột `pass` → chạy `python run.py score eval/run-1.csv`.
+- [x] `spec.md §0–§7` đầy đủ.
+- [x] **Video 30 giây** thao tác thật, AI trả lời thật (YouTube Unlisted / Drive Public, mở được tab ẩn danh).
+- [x] Chạy thử `python run.py simulate --try` (10 phiên).
 
 ### Phân việc
 - **Tối Thứ Sáu (20:30 – 23:00):**
