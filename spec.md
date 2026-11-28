@@ -95,8 +95,8 @@ flowchart TD
   | Grounding bắt buộc kèm mã nguồn | `search_lesson()` luôn trả về `code` (`DXX-SYY`) và `agent.py` yêu cầu thẻ gợi ý gắn mã đoạn để học viên kiểm chứng tại chỗ. |
   | Chống học thụ động (0% lộ đáp án) | Cổng `is_quiz_answer_request` ở `parse_learner_signal()` và ràng buộc `SYSTEM` prompt cấm nêu đáp án đúng/sai hoặc tóm tắt trọn bài. |
 
-- **Phần nào còn giả (ghi rõ ở mốc CP2):**
-  1. Ở cấu hình mặc định chưa điền `.env`, `codebase/ai.py` chạy chế độ giả (`MODEL_PROVIDER=fake`, token = 0) để đi hết luồng trước CP2; sẽ nối model thật ở CP3.
+- **Phần nào còn giả (cập nhật CP3–CP4):**
+  1. Lời gọi AI trung tâm đã nối **model thật** `gemini-3.5-flash-lite` (Google Gemini API) qua `.env` cục bộ (`eval/run-1.csv`, `run-3.csv`, `cost/simulate-2.csv` đều đo token thật từ `usageMetadata`); nhánh `fake` trong `codebase/ai.py` chỉ còn giữ làm fallback khi chưa cấu hình `.env`.
   2. Tín hiệu hành vi (dừng lâu, tua lại, rời tab, sai quiz) được truyền qua chuỗi text mô phỏng trong `input` thay vì đọc trực tiếp từ trình duyệt `preclass-online.com`.
   3. Kho bài học `data/lessons.json` gồm 12 đoạn viết lại/rút gọn ở 5 chủ điểm tiêu biểu, chưa bao phủ toàn bộ các ngày của khoá AI20K.
 
@@ -155,6 +155,7 @@ flowchart TD
 | 27/11 20:32 | Mở rộng `eval/benchmark.csv` từ 12 câu lên 24 câu (chỉ thêm mới `B13`–`B24`, giữ nguyên `B01`–`B12` và chuẩn "đạt") | Đáp ứng mốc CP3 (20–30 câu), phủ đủ 12/12 đoạn `data/lessons.json` và bổ sung thêm các ca thực tế từ `P1`, `P4`, `answers.csv`, `chat.csv`, `events.csv` (11/24 nguồn thật = 45,8%) |
 | 27/11 23:56 | Cải tiến `codebase/tools.py`: xử lý cụm phủ định (`không sai quiz`, `chưa tua lại`), lọc query theo `Tin nhắn HV:` để kích hoạt đúng G10, và tách câu hỏi khái niệm (`tại sao`/`vì sao`) khỏi bộ lọc cấm | Sửa cả 3 nhóm lỗi Lượt 1 (`eval/report.md`): Nhóm 1 (`B03`, `B08`, `B19`), Nhóm 2 (`B06`, `B22`), Nhóm 3 (`B18`) |
 | 28/11 00:46 | Chạy mô phỏng 50 phiên từ `eval/run-3.csv`, điền chi phí và giới hạn vào `cost/cost-estimate.md` + §8–§9; tạo `demo-slides.pdf` 8 trang | `cost/simulate-2-summary.md`: 50/50 phiên không lỗi; `eval/run-3.csv`: 24/24. Lượt mô phỏng 1 có 28 lỗi HTTP 429 nên không dùng để ước tính |
+| 28/11 11:08 | Đồng bộ mục "Phần nào còn giả" ở `spec.md §4` theo trạng thái đã nối model thật, sửa định dạng link video ở `README.md`, điền phân công thuyết trình trong `slides/outline.md` | Rà soát nhất quán toàn repo trước CP4 (không sửa chuẩn "đạt", câu thử hay kết quả các lượt đã chạy) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
