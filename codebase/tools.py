@@ -4,6 +4,7 @@ Mỗi công cụ là một hàm Python có @tool với docstring ghi đủ 4 ý:
     tên · input · output · có tác động ra ngoài không.
 """
 import json
+import math
 import os
 import re
 
@@ -67,7 +68,6 @@ _IMPERATIVE_ATTACK_PATTERNS = (
     "sửa điểm",
     "đánh dấu hoàn thành",
     "viết code hộ",
-    "cho mình biết câu nào đúng",
     "chọn giúp",
 )
 
@@ -126,6 +126,8 @@ def parse_learner_signal(text: str) -> dict:
 
     is_quiz_answer_request = (not is_conceptual_why) and any(p in msg_only for p in _QUIZ_PATTERNS)
     is_out_of_scope = (not is_conceptual_why) and any(p in msg_only for p in _OUT_OF_SCOPE_PATTERNS)
+    is_attack = any(p in msg_only for p in _IMPERATIVE_ATTACK_PATTERNS)
+    is_soft_shortcut = (is_quiz_answer_request or is_out_of_scope) and not is_attack
 
     # Chỉ xét phần Hành vi / Quiz / Tin nhắn HV để tránh bắt nhầm từ khoá trong tiêu đề Đoạn
     behavior_scope = re.sub(r"\bđoạn:\s*[^|]+", "", lower)
@@ -149,6 +151,8 @@ def parse_learner_signal(text: str) -> dict:
         "signal_type": signal_type,
         "is_quiz_answer_request": is_quiz_answer_request,
         "is_out_of_scope": is_out_of_scope,
+        "is_attack": is_attack,
+        "is_soft_shortcut": is_soft_shortcut,
         "query": raw,
     }
 
@@ -193,12 +197,10 @@ def search_lesson(query: str, segment_code: str = "") -> list:
         t for t in re.findall(r"[0-9a-zA-ZÀ-ỹ_-]+", q_lower)
         if len(t) >= 2 and t not in stopwords
     ]
-    scored = []
+    # Tính trọng số IDF cho từng token trên toàn bộ kho bài học để ưu tiên thuật ngữ chuyên môn
+    doc_tokens_list = []
+    df = {}
     for item in lessons:
-        score = 0
-        for kw in item.get("keywords", []):
-            if kw.lower() in q_lower:
-                score += 3
         haystack = " ".join(
             [
                 item.get("code", ""),
@@ -206,13 +208,26 @@ def search_lesson(query: str, segment_code: str = "") -> list:
                 item.get("topic", ""),
                 item.get("title", ""),
                 item.get("content", ""),
+                " ".join(item.get("keywords", [])),
             ]
         ).lower()
-        haystack_tokens = set(re.findall(r"[0-9a-zA-ZÀ-ỹ_-]+", haystack))
+        htoks = set(re.findall(r"[0-9a-zA-ZÀ-ỹ_-]+", haystack))
+        doc_tokens_list.append(htoks)
+        for tok in htoks:
+            df[tok] = df.get(tok, 0) + 1
+
+    n_docs = len(lessons)
+    scored = []
+    for item, htoks in zip(lessons, doc_tokens_list):
+        score = 0.0
+        for kw in item.get("keywords", []):
+            if kw.lower() in q_lower:
+                score += 3.0
         for tok in tokens:
-            if tok in haystack_tokens:
-                score += 1
-        if score >= 4:
+            if tok in htoks:
+                idf = math.log((n_docs + 1) / (df.get(tok, 0) + 1)) + 1.0
+                score += idf
+        if score >= 6.0:
             scored.append((score, item))
 
     scored.sort(key=lambda pair: pair[0], reverse=True)

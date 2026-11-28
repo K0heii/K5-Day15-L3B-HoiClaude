@@ -154,6 +154,7 @@ flowchart TD
 |---|---|---|
 | 27/11 20:32 | Mở rộng `eval/benchmark.csv` từ 12 câu lên 24 câu (chỉ thêm mới `B13`–`B24`, giữ nguyên `B01`–`B12` và chuẩn "đạt") | Đáp ứng mốc CP3 (20–30 câu), phủ đủ 12/12 đoạn `data/lessons.json` và bổ sung thêm các ca thực tế từ `P1`, `P4`, `answers.csv`, `chat.csv`, `events.csv` (11/24 nguồn thật = 45,8%) |
 | 27/11 23:56 | Cải tiến `codebase/tools.py`: xử lý cụm phủ định (`không sai quiz`, `chưa tua lại`), lọc query theo `Tin nhắn HV:` để kích hoạt đúng G10, và tách câu hỏi khái niệm (`tại sao`/`vì sao`) khỏi bộ lọc cấm | Sửa cả 3 nhóm lỗi Lượt 1 (`eval/report.md`): Nhóm 1 (`B03`, `B08`, `B19`), Nhóm 2 (`B06`, `B22`), Nhóm 3 (`B18`) |
+| 28/11 09:24 | Nâng cấp `search_lesson()` bằng trọng số IDF + từ khoá, tách `is_soft_shortcut` vs `is_attack` (`B09`, `B10`), và thêm hậu kiểm `_apply_output_guardrail()` trong `codebase/agent.py` | Giảm match nhầm ngoài bài (G10), giữ gợi ý đúng đoạn cho ca xin lối tắt (`B09`, `B10`), và chặn rò rỉ đáp án / mã đoạn bịa ở đầu ra model |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
