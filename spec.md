@@ -165,4 +165,4 @@ flowchart TD
 
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
-|  |  |  |
+| 28/11 14:30 | Cập nhật link Video Demo 2 (quay trực tiếp trên Web Demo kiểu Preclass Online) vào `README.md` (giữ nguyên link Demo 1 CLI CP3) | Bổ sung video dự phòng khớp giao diện Web Demo trên Slide 4 cho phần Demo Zone / Demo Phòng |

@@ -122,5 +122,5 @@ Nhóm dùng trợ lý AI (Antigravity / Gemini, Claude) để hỗ trợ rà so�
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · link video: https://drive.google.com/file/d/1l_8nM0sEe-XbauGb0-vsX3BVRLZ5s5ho/view |
+| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · Video Demo 2 (Web Demo Preclass Online, dự phòng CP4): https://drive.google.com/file/d/1ha6eMnC9_bd-fnVmHdsPL-z8_Rp2VrTC/view · Video Demo 1 (CLI CP3): https://drive.google.com/file/d/1l_8nM0sEe-XbauGb0-vsX3BVRLZ5s5ho/view |
 | + | *Bonus:* người dùng thử | `validation/log.md` |
