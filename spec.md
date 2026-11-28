@@ -159,6 +159,7 @@ flowchart TD
 | 28/11 11:29 | Thêm giao diện Web Demo cục bộ `codebase/web_demo.py` (thư viện chuẩn `http.server`) gọi trực tiếp `agent.answer()` + `tracing` | Hỗ trợ demo trực quan thẻ gỡ kẹt bên lề không che màn hình và thử nghiệm người dùng thật (`validation/log.md`); không thay đổi logic AI, `eval/` hay `cost/` |
 | 28/11 12:19 | Thiết kế lại 8 trang slide `slides/demo.html` → `demo-slides.pdf` theo bố cục ngắn gọn, trực quan (sơ đồ 4 bước, khung Preclass Online, biểu đồ cột Lượt 1 → 3) | Giúp người xem nắm ngay sản phẩm và bằng chứng thay vì đọc nhiều chữ; giữ nguyên 100% số đo và nguồn trích dẫn từ repo |
 | 28/11 13:05 | Rà soát đồng bộ câu chữ trước CP4 (`spec.md` §0 & §2, `README.md`, `docs/ai-usage.md`) và sửa ngưỡng gắn mã đoạn cho câu hỏi ngắn ngoài bài ở `codebase/web_demo.py` | Đồng bộ số liệu `~140 giờ/tháng` & `24 câu thử`, cập nhật khai báo dùng AI đủ CP4, đảm bảo câu ngắn ngoài bài (vd `PPO là gì?`) kích hoạt đúng G10 khi demo trực tiếp |
+| 28/11 13:18 | Gia cố 5 tầng guardrail đầu vào/đầu ra trong `codebase/agent.py` (chặn rò rỉ đáp án, mã đoạn lạ, giới hạn độ dài, soft-shortcut gợi mở đúng đoạn) và nâng cấp chấm điểm IDF trong `codebase/tools.py` (PR #3 `441d8d9`); đồng bộ nhận diện nhãn từ chối ở `codebase/web_demo.py` | Tăng độ an toàn khi demo câu lạ từ giám khảo mà không đổi định tuyến trên 24/24 câu benchmark (`0` sai lệch lượt gọi model so với `run-3`; kết quả báo cáo giữ nguyên mốc `run-3`) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

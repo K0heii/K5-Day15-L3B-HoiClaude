@@ -132,7 +132,7 @@ def classify_output(output_text: str) -> dict:
     codes = sorted(set(re.findall(r"\bD\d{2}-S\d{2}\b", text.upper())))
     if text.startswith("[Không xen vào]"):
         return {"kind": "silent", "label": "Giữ im lặng", "codes": codes}
-    if text.startswith("Mình không thể cung cấp đáp án"):
+    if text.startswith(("Mình không thể cung cấp đáp án", "Mình không thể cho đáp án")):
         return {"kind": "refuse", "label": "Không lộ đáp án", "codes": codes}
     if text.startswith("Chưa có đoạn bài học khớp"):
         return {"kind": "abstain", "label": "Ngoài tài liệu bài học", "codes": codes}
